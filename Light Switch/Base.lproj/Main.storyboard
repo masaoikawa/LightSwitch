@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Light_Switch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="Light_Switch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkn-wG-ruT">
-                                <rect key="frame" x="16" y="146" width="568" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkn-wG-ruT">
+                                <rect key="frame" x="243" y="0.0" width="115" height="413"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="37"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -27,14 +27,30 @@
                                     <action selector="sendButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OLp-hd-Wcu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teV-xH-fO0">
-                                <rect key="frame" x="16" y="482" width="568" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teV-xH-fO0">
+                                <rect key="frame" x="266" y="0.0" width="68" height="1031"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="28"/>
                                 <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="teV-xH-fO0" secondAttribute="centerY" constant="-215.5" id="A61-2R-H9Q"/>
+                            <constraint firstAttribute="centerY" secondItem="wkn-wG-ruT" secondAttribute="centerY" constant="93.5" id="Hdw-Al-jXP"/>
+                            <constraint firstAttribute="centerX" secondItem="teV-xH-fO0" secondAttribute="centerX" id="LrK-pl-QJL"/>
+                            <constraint firstAttribute="centerX" secondItem="wkn-wG-ruT" secondAttribute="centerX" id="aVL-G7-rGX"/>
+                            <constraint firstAttribute="centerY" secondItem="teV-xH-fO0" secondAttribute="centerY" constant="-142" id="hdF-im-69x"/>
+                            <constraint firstItem="wkn-wG-ruT" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="ily-x2-G9h"/>
+                            <constraint firstItem="wkn-wG-ruT" firstAttribute="top" secondItem="teV-xH-fO0" secondAttribute="top" id="sn0-Wg-nwW"/>
+                            <constraint firstAttribute="centerY" secondItem="teV-xH-fO0" secondAttribute="centerY" constant="20" id="yxX-Id-QDD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hdF-im-69x"/>
+                                <exclude reference="yxX-Id-QDD"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="btnLabel" destination="wkn-wG-ruT" id="k52-zy-c5v"/>
@@ -43,6 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="325" y="245"/>
         </scene>
     </scenes>
 </document>

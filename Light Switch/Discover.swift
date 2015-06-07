@@ -12,7 +12,7 @@ import CoreBluetooth
 
 let blDiscoverySharedInstance = BLDiscovery()
 
-private let DISCOVERD:String        =       "nRF5x"
+private let DISCOVERD:String        =       "nRF5x" //"Biscuit" //
 private let UUID_VSP_SERVICE:String =       "713D0000-503E-4C75-BA94-3148F18D941E" //VSP
 private let UUID_RX:String          =       "713D0002-503E-4C75-BA94-3148F18D941E" //RX
 private let UUID_TX:String          =		"713D0003-503E-4C75-BA94-3148F18D941E" //TX
