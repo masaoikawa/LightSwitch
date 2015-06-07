@@ -13,6 +13,8 @@
 		4239F0F81B249261000D2EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4239F0F71B249261000D2EC9 /* Images.xcassets */; };
 		4239F0FB1B249261000D2EC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4239F0F91B249261000D2EC9 /* LaunchScreen.xib */; };
 		4239F1071B249261000D2EC9 /* Light_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F1061B249261000D2EC9 /* Light_SwitchTests.swift */; };
+		4239F1111B24929C000D2EC9 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F1101B24929C000D2EC9 /* Discover.swift */; };
+		4239F1131B2492B9000D2EC9 /* BLEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F1121B2492B9000D2EC9 /* BLEUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		4239F1001B249261000D2EC9 /* Light SwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light SwitchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4239F1051B249261000D2EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4239F1061B249261000D2EC9 /* Light_SwitchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_SwitchTests.swift; sourceTree = "<group>"; };
+		4239F1101B24929C000D2EC9 /* Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
+		4239F1121B2492B9000D2EC9 /* BLEUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				4239F0F71B249261000D2EC9 /* Images.xcassets */,
 				4239F0F91B249261000D2EC9 /* LaunchScreen.xib */,
 				4239F0EE1B249261000D2EC9 /* Supporting Files */,
+				4239F1101B24929C000D2EC9 /* Discover.swift */,
+				4239F1121B2492B9000D2EC9 /* BLEUtility.swift */,
 			);
 			path = "Light Switch";
 			sourceTree = "<group>";
@@ -161,6 +167,11 @@
 				TargetAttributes = {
 					4239F0EA1B249261000D2EC9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					4239F0FF1B249261000D2EC9 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -214,6 +225,8 @@
 			files = (
 				4239F0F31B249261000D2EC9 /* ViewController.swift in Sources */,
 				4239F0F11B249261000D2EC9 /* AppDelegate.swift in Sources */,
+				4239F1131B2492B9000D2EC9 /* BLEUtility.swift in Sources */,
+				4239F1111B24929C000D2EC9 /* Discover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
