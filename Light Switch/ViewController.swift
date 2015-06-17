@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  BLETest
+//  Light Switch
 //
 //  Created by 井川 雅央 on 2015/06/04.
 //  Copyright (c) 2015年 井川 雅央. All rights reserved.
