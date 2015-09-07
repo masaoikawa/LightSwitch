@@ -14,8 +14,7 @@ class ViewController: UIViewController, DiscoveryDelegate {
     @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var temperatureLabel: UILabel!
     
-    var discovery: BLDiscovery!
-    
+    internal var discovery: BLDiscovery!
     
     // MARK:delegate - ViewController
     

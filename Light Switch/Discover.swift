@@ -38,16 +38,32 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     override init(){
         super.init()
         
+        self.setupCentralManager()
+    }
+    
+    func setupCentralManager() {
         //let centralQueue = dispatch_queue_create("nu.whiletrue", DISPATCH_QUEUE_SERIAL)
         let centralQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)
         let options: Dictionary = [
             CBCentralManagerOptionRestoreIdentifierKey: "myKey"
         ]
         println("Initializing central manager")
-        centralManager = CBCentralManager(delegate: self, queue: centralQueue, options: [CBCentralManagerOptionRestoreIdentifierKey: "myKey"])
+        centralManager = CBCentralManager(delegate: self, queue: centralQueue, options: options)
     }
     
     func centralManager(central: CBCentralManager!, willRestoreState dict: [NSObject : AnyObject]!) {
+        if let peripherals:[CBPeripheral] = dict[CBCentralManagerRestoredStatePeripheralsKey] as! [CBPeripheral]! {
+            println("willRestoreState")
+            for peripheral in peripherals {
+                if(peripheral.name != nil && peripheral.name == DISCOVERD){
+                    central.stopScan()
+                    println("Find " + DISCOVERD)
+                    delegate?.didUpdateState?("Find " + DISCOVERD)
+                    self.peripheral = peripheral;
+                    central.connectPeripheral(self.peripheral, options: nil)
+                }
+            }
+        }
         return
     }
     
