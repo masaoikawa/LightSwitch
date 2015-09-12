@@ -145,7 +145,8 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
         
         self.peripheral.delegate = self;
-        self.peripheral.discoverServices(nil)
+        let UUID = CBUUID(string: UUID_VSP_SERVICE)
+        self.peripheral.discoverServices([UUID])
         println("Connected")
         delegate?.didConnect?()
     }

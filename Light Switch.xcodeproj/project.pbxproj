@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		421722E11B9DFA1100D931EE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 421722E01B9DFA1100D931EE /* README.md */; };
 		4239F0F11B249261000D2EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F0F01B249261000D2EC9 /* AppDelegate.swift */; };
 		4239F0F31B249261000D2EC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F0F21B249261000D2EC9 /* ViewController.swift */; };
 		4239F0F61B249261000D2EC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4239F0F41B249261000D2EC9 /* Main.storyboard */; };
@@ -23,6 +22,7 @@
 		4239F12D1B2493E0000D2EC9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4239F12B1B2493E0000D2EC9 /* Interface.storyboard */; };
 		4239F12F1B2493E1000D2EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4239F12E1B2493E1000D2EC9 /* Images.xcassets */; };
 		4239F1321B2493E1000D2EC9 /* Light Switch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4239F1181B2493DF000D2EC9 /* Light Switch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		423BA20A1BA49C00003E768F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 421722E01B9DFA1100D931EE /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -312,6 +312,7 @@
 					};
 					4239F1231B2493E0000D2EC9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = BLJ9859GQ8;
 					};
 				};
 			};
@@ -341,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423BA20A1BA49C00003E768F /* README.md in Resources */,
 				4239F0F61B249261000D2EC9 /* Main.storyboard in Resources */,
 				4239F0FB1B249261000D2EC9 /* LaunchScreen.xib in Resources */,
 				4239F0F81B249261000D2EC9 /* Images.xcassets in Resources */,
@@ -381,7 +383,6 @@
 			files = (
 				4239F0F31B249261000D2EC9 /* ViewController.swift in Sources */,
 				4239F0F11B249261000D2EC9 /* AppDelegate.swift in Sources */,
-				421722E11B9DFA1100D931EE /* README.md in Sources */,
 				4239F1131B2492B9000D2EC9 /* BLEUtility.swift in Sources */,
 				4239F1111B24929C000D2EC9 /* Discover.swift in Sources */,
 			);
@@ -591,6 +592,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -599,6 +602,7 @@
 				INFOPLIST_FILE = "Light Switch WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -609,10 +613,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				IBSC_MODULE = Light_Switch_WatchKit_Extension;
 				INFOPLIST_FILE = "Light Switch WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
