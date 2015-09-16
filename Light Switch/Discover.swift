@@ -13,6 +13,7 @@ import CoreBluetooth
 let blDiscoverySharedInstance = BLDiscovery()
 
 private let DISCOVERD:String        =       "nRF5x" //"Biscuit" //
+private let UUID_DISCOVERD:String   =       "844BC615-70B2-D539-5C27-5E940A674FA1"
 private let UUID_VSP_SERVICE:String =       "713D0000-503E-4C75-BA94-3148F18D941E" //VSP
 private let UUID_RX:String          =       "713D0002-503E-4C75-BA94-3148F18D941E" //RX
 private let UUID_TX:String          =		"713D0003-503E-4C75-BA94-3148F18D941E" //TX
@@ -122,7 +123,8 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     func startScanning(){
         println("Start scanning")
         delegate?.didUpdateState?("Start scanning")
-        centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        //centralManager.scanForPeripheralsWithServices(nil, options:nil)
+        centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
