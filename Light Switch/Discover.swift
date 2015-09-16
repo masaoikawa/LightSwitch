@@ -34,6 +34,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     
     var results: [String]! = []
     var pauseUpdate: Bool! = false
+    var switchState: Bool! = true
     
     // MARK:init
     override init(){
@@ -85,6 +86,11 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         let dataOff = NSData(bytes: &rawArray, length: rawArray.count)
         BLEUtilitySwift.writeCharacteristic(peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOff)
     }
+    func readState(){
+        println("readStat")
+        
+        BLEUtilitySwift.readCharacteristic(peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
+    }
     
     // MARK:delegate - centralManager
     
@@ -124,7 +130,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         println("Start scanning")
         delegate?.didUpdateState?("Start scanning")
         //centralManager.scanForPeripheralsWithServices(nil, options:nil)
-        centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
+        centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(bool: true)])
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
@@ -193,7 +199,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         for aChar in service.characteristics
         {
             //println("Characteristics UUID: \((aChar as CBCharacteristic).UUID)")
-            if((aChar as! CBCharacteristic).UUID.isEqual(CBUUID(string: UUID_VSP_SERVICE))){
+            if((aChar as! CBCharacteristic).UUID.isEqual(CBUUID(string: UUID_TX))){
                 
                 var random = NSInteger(1)
                 var data = NSData(bytes: &random, length: 1)
@@ -203,11 +209,13 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
                 rawArray = [0x01, 0x00]
                 let dataOff = NSData(bytes: &rawArray, length: rawArray.count)
                 
-                BLEUtilitySwift.writeCharacteristic(self.peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOn)
+                println("Done with setting up TX")
+                //BLEUtilitySwift.writeCharacteristic(self.peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOn)
+            }else if( (aChar as! CBCharacteristic).UUID.isEqual((CBUUID(string: UUID_RX)))) {
                 BLEUtilitySwift.readCharacteristic(self.peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
                 BLEUtilitySwift.setNotificationForCharacteristic(self.peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX, enable: true)
                 
-                println("Done with setting up TX-RX sensor")
+                println("Done with setting up RX sensor")
             }
         }
     }
@@ -238,12 +246,31 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
             results.append("\(str)\n")
             
         }
+        //delegate?.didUpdateState!("updateStat")
     }
     
     func peripheral(peripheral: CBPeripheral!, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
         println("didUpdateNotificationStateForCharacteristic \(characteristic.UUID), error = \(error)");
+
+        // ReadValue
+        var temp = characteristic.value
+        println("VAL: \(temp)")
+        
+        str = " \(temp) "
+        
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd H:m:s"
+        
+        let date = dateFormatter.stringFromDate(NSDate()) as String!
+        
+        results.append("\(date),")
+        results.append("\(str)\n")
+        
+        //delegate?.didUpdateState!("updateNotification")
+
     }
-    
+
     func aarrayToString() -> String {
         var str: String! = ""
         

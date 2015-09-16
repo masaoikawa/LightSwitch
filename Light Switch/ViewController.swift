@@ -58,17 +58,18 @@ class ViewController: UIViewController, DiscoveryDelegate {
     
     @IBAction func sendButton(sender: AnyObject) {
         
-        if !discovery.pauseUpdate.boolValue {
-            discovery.pauseUpdate = true
+        if !discovery.switchState.boolValue {
             btnLabel.setTitle("Off", forState: .Normal)
             
             discovery.sendOn()
-            
+            discovery.switchState = true
+            discovery.readState()
         } else {
-            discovery.pauseUpdate = false
             btnLabel.setTitle("On", forState: .Normal)
             
             discovery.sendOff()
+            discovery.switchState = false
+            discovery.readState()
         }
     }
     
