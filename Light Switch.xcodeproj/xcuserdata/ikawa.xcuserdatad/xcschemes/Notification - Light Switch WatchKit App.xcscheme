@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0630"
+   LastUpgradeVersion = "0700"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-               BuildableName = "Light Switch WatchKit App.app"
+               BuildableName = "Light Switch.app"
                BlueprintName = "Light Switch WatchKit App"
                ReferencedContainer = "container:Light Switch.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4239F1171B2493DF000D2EC9"
-               BuildableName = "Light Switch WatchKit Extension.appex"
+               BuildableName = "Light Switch.appex"
                BlueprintName = "Light Switch WatchKit Extension"
                ReferencedContainer = "container:Light Switch.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4239F0EA1B249261000D2EC9"
-               BuildableName = "Light Switch.app"
+               BuildableName = "Light Switch Watch.app"
                BlueprintName = "Light Switch"
                ReferencedContainer = "container:Light Switch.xcodeproj">
             </BuildableReference>
@@ -51,30 +51,33 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch WatchKit App.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "8">
       <RemoteRunnable
@@ -84,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch WatchKit App.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -93,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch WatchKit App.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -102,10 +105,10 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "8">
       <RemoteRunnable
@@ -115,7 +118,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch WatchKit App.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -124,7 +127,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch WatchKit App.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>

@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-import CoreBluetooth
+import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController {
@@ -29,16 +29,33 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func sendOn() {
         //Send count to parent application
-        WKInterfaceController.openParentApplication(["countValue": "\(1)"],
-            reply: {replyInfo, error in
-                if let error = error {
-                    println("Error.")
-                }
-                if let replyInfo = replyInfo {
-                    var title: String? = replyInfo["fromApp"] as? String
+        let data = ["countValue": "\(1)"]   //This is the data you will send
+        /*
+        WCSession.defaultSession().sendMessageData(data,
+            replyHandler: <#T##((NSData) -> Void)?##((NSData) -> Void)?##(NSData) -> Void#>,
+            errorHandler: <#T##((NSError) -> Void)?##((NSError) -> Void)?##(NSError) -> Void#>)
+        */
+        
+        
+        WCSession.defaultSession().sendMessage(data,
+            replyHandler: { (reply) -> Void in
+                if let replyInfo = reply as? [String: String], title = replyInfo["fromApp"] {
                     self.btnLabel?.setTitle( title )
                 }
-        })
+            },
+            errorHandler: { (NSError) -> Void in
+                print("SendOn Error")
+            }
+        )
+        
+        /*
+        WKInterfaceController.openParentApplication(["countValue": "\(1)"]) {
+            (reply, error) -> Void in
+            if let replyInfo = reply as? [String: String], title = replyInfo["fromApp"] {
+                    self.btnLabel?.setTitle( title )
+            }
+        }
+        */
     }
     
     override func didDeactivate() {
