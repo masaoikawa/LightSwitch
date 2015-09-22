@@ -121,7 +121,6 @@
 		4239F12A1B2493E0000D2EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4239F12C1B2493E0000D2EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		4239F12E1B2493E1000D2EC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		42936A691BADDFA7005C6C37 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		42936A741BADEBDB005C6C37 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -155,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				42936A741BADEBDB005C6C37 /* WatchConnectivity.framework */,
-				42936A691BADDFA7005C6C37 /* WatchKit.framework */,
 				421722E01B9DFA1100D931EE /* README.md */,
 				4239F0ED1B249261000D2EC9 /* Light Switch */,
 				4239F1031B249261000D2EC9 /* Light SwitchTests */,
