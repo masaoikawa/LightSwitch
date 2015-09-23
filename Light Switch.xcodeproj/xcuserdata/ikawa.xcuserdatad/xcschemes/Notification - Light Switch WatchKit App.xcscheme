@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-               BuildableName = "Light Switch Watch.app"
+               BuildableName = "Light Switch.app"
                BlueprintName = "Light Switch WatchKit App"
                ReferencedContainer = "container:Light Switch.xcodeproj">
             </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch Watch.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch Watch.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch Watch.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -118,7 +118,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch Watch.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>
@@ -127,7 +127,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4239F1231B2493E0000D2EC9"
-            BuildableName = "Light Switch Watch.app"
+            BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch WatchKit App"
             ReferencedContainer = "container:Light Switch.xcodeproj">
          </BuildableReference>

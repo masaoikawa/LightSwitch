@@ -15,10 +15,17 @@ class InterfaceController: WKInterfaceController {
     
     @IBOutlet weak var btnLabel: WKInterfaceButton?
     
+    var session : WCSession?
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
+        /*// Configure interface objects here.
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self;
+            session.activateSession()
+        }*/
     }
     
     override func willActivate() {
@@ -26,27 +33,16 @@ class InterfaceController: WKInterfaceController {
         super.willActivate()
         
     }
+    override func didDeactivate() {
+        super.didDeactivate()
+    }
     
     @IBAction func sendOn() {
         //Send count to parent application
-        let data = ["countValue": "\(1)"]   //This is the data you will send
-        /*
-        WCSession.defaultSession().sendMessageData(data,
-            replyHandler: <#T##((NSData) -> Void)?##((NSData) -> Void)?##(NSData) -> Void#>,
-            errorHandler: <#T##((NSError) -> Void)?##((NSError) -> Void)?##(NSError) -> Void#>)
-        */
+        let data:[String : AnyObject] = ["countValue": "\(1)"]   //This is the data you will send
         
-        
-        WCSession.defaultSession().sendMessage(data,
-            replyHandler: { (reply) -> Void in
-                if let replyInfo = reply as? [String: String], title = replyInfo["fromApp"] {
-                    self.btnLabel?.setTitle( title )
-                }
-            },
-            errorHandler: { (NSError) -> Void in
-                print("SendOn Error")
-            }
-        )
+        // 送信側
+        try! WCSession.defaultSession().updateApplicationContext( data )
         
         /*
         WKInterfaceController.openParentApplication(["countValue": "\(1)"]) {
@@ -57,10 +53,12 @@ class InterfaceController: WKInterfaceController {
         }
         */
     }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    /*
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        let title = applicationContext["fromApp"] as! String
+        self.btnLabel?.setTitle( title )
     }
+    */
+    
     
 }
