@@ -7,90 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4232DEE61BB2114000662C4F /* Light Switch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4239F1241B2493E0000D2EC9 /* Light Switch.app */; };
-		4239F0F11B249261000D2EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F0F01B249261000D2EC9 /* AppDelegate.swift */; };
-		4239F0F31B249261000D2EC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F0F21B249261000D2EC9 /* ViewController.swift */; };
-		4239F0F61B249261000D2EC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4239F0F41B249261000D2EC9 /* Main.storyboard */; };
-		4239F0F81B249261000D2EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4239F0F71B249261000D2EC9 /* Images.xcassets */; };
-		4239F0FB1B249261000D2EC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4239F0F91B249261000D2EC9 /* LaunchScreen.xib */; };
-		4239F1071B249261000D2EC9 /* Light_SwitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F1061B249261000D2EC9 /* Light_SwitchTests.swift */; };
-		4239F1111B24929C000D2EC9 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F1101B24929C000D2EC9 /* Discover.swift */; };
-		4239F1131B2492B9000D2EC9 /* BLEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F1121B2492B9000D2EC9 /* BLEUtility.swift */; };
-		4239F11D1B2493DF000D2EC9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F11C1B2493DF000D2EC9 /* InterfaceController.swift */; };
-		4239F11F1B2493DF000D2EC9 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239F11E1B2493DF000D2EC9 /* GlanceController.swift */; };
-		4239F12D1B2493E0000D2EC9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4239F12B1B2493E0000D2EC9 /* Interface.storyboard */; };
-		4239F12F1B2493E1000D2EC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4239F12E1B2493E1000D2EC9 /* Images.xcassets */; };
-		423BA20A1BA49C00003E768F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 421722E01B9DFA1100D931EE /* README.md */; };
-		42936A631BADDF35005C6C37 /* Light Switch.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4239F1181B2493DF000D2EC9 /* Light Switch.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		425ABE291BB43AED00E2DAD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE281BB43AED00E2DAD9 /* AppDelegate.swift */; };
+		425ABE2B1BB43AED00E2DAD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE2A1BB43AED00E2DAD9 /* ViewController.swift */; };
+		425ABE2E1BB43AED00E2DAD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE2C1BB43AED00E2DAD9 /* Main.storyboard */; };
+		425ABE301BB43AED00E2DAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE2F1BB43AED00E2DAD9 /* Assets.xcassets */; };
+		425ABE331BB43AED00E2DAD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE311BB43AED00E2DAD9 /* LaunchScreen.storyboard */; };
+		425ABE401BB43B3100E2DAD9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE3E1BB43B3100E2DAD9 /* Interface.storyboard */; };
+		425ABE421BB43B3100E2DAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE411BB43B3100E2DAD9 /* Assets.xcassets */; };
+		425ABE491BB43B3100E2DAD9 /* Light Switch Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 425ABE481BB43B3100E2DAD9 /* Light Switch Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		425ABE4E1BB43B3200E2DAD9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE4D1BB43B3200E2DAD9 /* InterfaceController.swift */; };
+		425ABE501BB43B3200E2DAD9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE4F1BB43B3200E2DAD9 /* ExtensionDelegate.swift */; };
+		425ABE521BB43B3200E2DAD9 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE511BB43B3200E2DAD9 /* GlanceController.swift */; };
+		425ABE541BB43B3200E2DAD9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE531BB43B3200E2DAD9 /* ComplicationController.swift */; };
+		425ABE561BB43B3200E2DAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE551BB43B3200E2DAD9 /* Assets.xcassets */; };
+		425ABE5A1BB43B3200E2DAD9 /* Light Switch Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 425ABE3C1BB43B3100E2DAD9 /* Light Switch Watch.app */; };
+		425ABE641BB43D1000E2DAD9 /* BLEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */; settings = {ASSET_TAGS = (); }; };
+		425ABE661BB43D5000E2DAD9 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE651BB43D5000E2DAD9 /* Discover.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4232DEE41BB210DB00662C4F /* PBXContainerItemProxy */ = {
+		425ABE4A1BB43B3100E2DAD9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4239F0E31B249261000D2EC9 /* Project object */;
+			containerPortal = 425ABE1D1BB43AEC00E2DAD9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4239F1171B2493DF000D2EC9;
-			remoteInfo = "Light Switch WatchKit Extension";
+			remoteGlobalIDString = 425ABE471BB43B3100E2DAD9;
+			remoteInfo = "Light Switch Watch Extension";
 		};
-		4239F1011B249261000D2EC9 /* PBXContainerItemProxy */ = {
+		425ABE581BB43B3200E2DAD9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4239F0E31B249261000D2EC9 /* Project object */;
+			containerPortal = 425ABE1D1BB43AEC00E2DAD9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4239F0EA1B249261000D2EC9;
-			remoteInfo = "Light Switch";
-		};
-		42936A611BADDF35005C6C37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4239F0E31B249261000D2EC9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4239F1171B2493DF000D2EC9;
-			remoteInfo = "Light Switch WatchKit Extension";
-		};
-		42936A6C1BADE2D8005C6C37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4239F0E31B249261000D2EC9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4239F1231B2493E0000D2EC9;
-			remoteInfo = "Light Switch WatchKit App";
-		};
-		42936A711BADE352005C6C37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4239F0E31B249261000D2EC9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4239F0EA1B249261000D2EC9;
-			remoteInfo = "Light Switch";
+			remoteGlobalIDString = 425ABE3B1BB43B3100E2DAD9;
+			remoteInfo = "Light Switch Watch";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		42936A671BADDF35005C6C37 /* Embed App Extensions */ = {
+		425ABE5E1BB43B3200E2DAD9 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				42936A631BADDF35005C6C37 /* Light Switch.appex in Embed App Extensions */,
+				425ABE491BB43B3100E2DAD9 /* Light Switch Watch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		42936A681BADDF35005C6C37 /* Embed Watch Content */ = {
+		425ABE621BB43B3200E2DAD9 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				4232DEE61BB2114000662C4F /* Light Switch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		42936A6E1BADE2D9005C6C37 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
+				425ABE5A1BB43B3200E2DAD9 /* Light Switch Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,46 +68,37 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		421722E01B9DFA1100D931EE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4239F0EB1B249261000D2EC9 /* Light Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4239F0EF1B249261000D2EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4239F0F01B249261000D2EC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4239F0F21B249261000D2EC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4239F0F51B249261000D2EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4239F0F71B249261000D2EC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4239F0FA1B249261000D2EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4239F1001B249261000D2EC9 /* Light Switch.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Light Switch.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4239F1051B249261000D2EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4239F1061B249261000D2EC9 /* Light_SwitchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light_SwitchTests.swift; sourceTree = "<group>"; };
-		4239F1101B24929C000D2EC9 /* Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
-		4239F1121B2492B9000D2EC9 /* BLEUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEUtility.swift; sourceTree = "<group>"; };
-		4239F1181B2493DF000D2EC9 /* Light Switch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Light Switch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4239F11B1B2493DF000D2EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4239F11C1B2493DF000D2EC9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		4239F11E1B2493DF000D2EC9 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		4239F1201B2493DF000D2EC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4239F1241B2493E0000D2EC9 /* Light Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4239F12A1B2493E0000D2EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4239F12C1B2493E0000D2EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		4239F12E1B2493E1000D2EC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		425ABE251BB43AED00E2DAD9 /* Light Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Switch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		425ABE281BB43AED00E2DAD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		425ABE2A1BB43AED00E2DAD9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		425ABE2D1BB43AED00E2DAD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		425ABE2F1BB43AED00E2DAD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		425ABE321BB43AED00E2DAD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		425ABE341BB43AED00E2DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		425ABE3C1BB43B3100E2DAD9 /* Light Switch Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Switch Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		425ABE3F1BB43B3100E2DAD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		425ABE411BB43B3100E2DAD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		425ABE431BB43B3100E2DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		425ABE481BB43B3100E2DAD9 /* Light Switch Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Light Switch Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		425ABE4D1BB43B3200E2DAD9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		425ABE4F1BB43B3200E2DAD9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		425ABE511BB43B3200E2DAD9 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		425ABE531BB43B3200E2DAD9 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		425ABE551BB43B3200E2DAD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		425ABE571BB43B3200E2DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEUtility.swift; sourceTree = "<group>"; };
+		425ABE651BB43D5000E2DAD9 /* Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4239F0E81B249261000D2EC9 /* Frameworks */ = {
+		425ABE221BB43AED00E2DAD9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4239F0FD1B249261000D2EC9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4239F1151B2493DF000D2EC9 /* Frameworks */ = {
+		425ABE451BB43B3100E2DAD9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,196 +108,131 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4239F0E21B249261000D2EC9 = {
+		425ABE1C1BB43AEC00E2DAD9 = {
 			isa = PBXGroup;
 			children = (
-				421722E01B9DFA1100D931EE /* README.md */,
-				4239F0ED1B249261000D2EC9 /* Light Switch */,
-				4239F1031B249261000D2EC9 /* Light SwitchTests */,
-				4239F1191B2493DF000D2EC9 /* Light Switch WatchKit Extension */,
-				4239F1281B2493E0000D2EC9 /* Light Switch WatchKit App */,
-				4239F0EC1B249261000D2EC9 /* Products */,
+				425ABE271BB43AED00E2DAD9 /* Light Switch */,
+				425ABE3D1BB43B3100E2DAD9 /* Light Switch Watch */,
+				425ABE4C1BB43B3100E2DAD9 /* Light Switch Watch Extension */,
+				425ABE261BB43AED00E2DAD9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4239F0EC1B249261000D2EC9 /* Products */ = {
+		425ABE261BB43AED00E2DAD9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4239F0EB1B249261000D2EC9 /* Light Switch.app */,
-				4239F1001B249261000D2EC9 /* Light Switch.xctest */,
-				4239F1181B2493DF000D2EC9 /* Light Switch.appex */,
-				4239F1241B2493E0000D2EC9 /* Light Switch.app */,
+				425ABE251BB43AED00E2DAD9 /* Light Switch.app */,
+				425ABE3C1BB43B3100E2DAD9 /* Light Switch Watch.app */,
+				425ABE481BB43B3100E2DAD9 /* Light Switch Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4239F0ED1B249261000D2EC9 /* Light Switch */ = {
+		425ABE271BB43AED00E2DAD9 /* Light Switch */ = {
 			isa = PBXGroup;
 			children = (
-				4239F0F01B249261000D2EC9 /* AppDelegate.swift */,
-				4239F0F21B249261000D2EC9 /* ViewController.swift */,
-				4239F0F41B249261000D2EC9 /* Main.storyboard */,
-				4239F0F71B249261000D2EC9 /* Images.xcassets */,
-				4239F0F91B249261000D2EC9 /* LaunchScreen.xib */,
-				4239F1101B24929C000D2EC9 /* Discover.swift */,
-				4239F1121B2492B9000D2EC9 /* BLEUtility.swift */,
-				4239F0EE1B249261000D2EC9 /* Supporting Files */,
+				425ABE281BB43AED00E2DAD9 /* AppDelegate.swift */,
+				425ABE2A1BB43AED00E2DAD9 /* ViewController.swift */,
+				425ABE2C1BB43AED00E2DAD9 /* Main.storyboard */,
+				425ABE2F1BB43AED00E2DAD9 /* Assets.xcassets */,
+				425ABE311BB43AED00E2DAD9 /* LaunchScreen.storyboard */,
+				425ABE341BB43AED00E2DAD9 /* Info.plist */,
+				425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */,
+				425ABE651BB43D5000E2DAD9 /* Discover.swift */,
 			);
 			path = "Light Switch";
 			sourceTree = "<group>";
 		};
-		4239F0EE1B249261000D2EC9 /* Supporting Files */ = {
+		425ABE3D1BB43B3100E2DAD9 /* Light Switch Watch */ = {
 			isa = PBXGroup;
 			children = (
-				4239F0EF1B249261000D2EC9 /* Info.plist */,
+				425ABE3E1BB43B3100E2DAD9 /* Interface.storyboard */,
+				425ABE411BB43B3100E2DAD9 /* Assets.xcassets */,
+				425ABE431BB43B3100E2DAD9 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Light Switch Watch";
 			sourceTree = "<group>";
 		};
-		4239F1031B249261000D2EC9 /* Light SwitchTests */ = {
+		425ABE4C1BB43B3100E2DAD9 /* Light Switch Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				4239F1061B249261000D2EC9 /* Light_SwitchTests.swift */,
-				4239F1041B249261000D2EC9 /* Supporting Files */,
+				425ABE4D1BB43B3200E2DAD9 /* InterfaceController.swift */,
+				425ABE4F1BB43B3200E2DAD9 /* ExtensionDelegate.swift */,
+				425ABE511BB43B3200E2DAD9 /* GlanceController.swift */,
+				425ABE531BB43B3200E2DAD9 /* ComplicationController.swift */,
+				425ABE551BB43B3200E2DAD9 /* Assets.xcassets */,
+				425ABE571BB43B3200E2DAD9 /* Info.plist */,
 			);
-			path = "Light SwitchTests";
-			sourceTree = "<group>";
-		};
-		4239F1041B249261000D2EC9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4239F1051B249261000D2EC9 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4239F1191B2493DF000D2EC9 /* Light Switch WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				4239F11C1B2493DF000D2EC9 /* InterfaceController.swift */,
-				4239F11E1B2493DF000D2EC9 /* GlanceController.swift */,
-				4239F1201B2493DF000D2EC9 /* Images.xcassets */,
-				4239F11A1B2493DF000D2EC9 /* Supporting Files */,
-			);
-			path = "Light Switch WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		4239F11A1B2493DF000D2EC9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4239F11B1B2493DF000D2EC9 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4239F1281B2493E0000D2EC9 /* Light Switch WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				4239F12B1B2493E0000D2EC9 /* Interface.storyboard */,
-				4239F12E1B2493E1000D2EC9 /* Images.xcassets */,
-				4239F1291B2493E0000D2EC9 /* Supporting Files */,
-			);
-			path = "Light Switch WatchKit App";
-			sourceTree = "<group>";
-		};
-		4239F1291B2493E0000D2EC9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4239F12A1B2493E0000D2EC9 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = "Light Switch Watch Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4239F0EA1B249261000D2EC9 /* Light Switch */ = {
+		425ABE241BB43AED00E2DAD9 /* Light Switch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4239F10A1B249261000D2EC9 /* Build configuration list for PBXNativeTarget "Light Switch" */;
+			buildConfigurationList = 425ABE371BB43AED00E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch" */;
 			buildPhases = (
-				4239F0E71B249261000D2EC9 /* Sources */,
-				4239F0E81B249261000D2EC9 /* Frameworks */,
-				4239F0E91B249261000D2EC9 /* Resources */,
-				42936A681BADDF35005C6C37 /* Embed Watch Content */,
+				425ABE211BB43AED00E2DAD9 /* Sources */,
+				425ABE221BB43AED00E2DAD9 /* Frameworks */,
+				425ABE231BB43AED00E2DAD9 /* Resources */,
+				425ABE621BB43B3200E2DAD9 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4232DEE51BB210DB00662C4F /* PBXTargetDependency */,
+				425ABE591BB43B3200E2DAD9 /* PBXTargetDependency */,
 			);
 			name = "Light Switch";
 			productName = "Light Switch";
-			productReference = 4239F0EB1B249261000D2EC9 /* Light Switch.app */;
+			productReference = 425ABE251BB43AED00E2DAD9 /* Light Switch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4239F0FF1B249261000D2EC9 /* Light SwitchTests */ = {
+		425ABE3B1BB43B3100E2DAD9 /* Light Switch Watch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4239F10D1B249261000D2EC9 /* Build configuration list for PBXNativeTarget "Light SwitchTests" */;
+			buildConfigurationList = 425ABE5F1BB43B3200E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch Watch" */;
 			buildPhases = (
-				4239F0FC1B249261000D2EC9 /* Sources */,
-				4239F0FD1B249261000D2EC9 /* Frameworks */,
-				4239F0FE1B249261000D2EC9 /* Resources */,
+				425ABE3A1BB43B3100E2DAD9 /* Resources */,
+				425ABE5E1BB43B3200E2DAD9 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4239F1021B249261000D2EC9 /* PBXTargetDependency */,
+				425ABE4B1BB43B3100E2DAD9 /* PBXTargetDependency */,
 			);
-			name = "Light SwitchTests";
-			productName = "Light SwitchTests";
-			productReference = 4239F1001B249261000D2EC9 /* Light Switch.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4239F1171B2493DF000D2EC9 /* Light Switch WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4239F1361B2493E1000D2EC9 /* Build configuration list for PBXNativeTarget "Light Switch WatchKit Extension" */;
-			buildPhases = (
-				4239F1141B2493DF000D2EC9 /* Sources */,
-				4239F1151B2493DF000D2EC9 /* Frameworks */,
-				4239F1161B2493DF000D2EC9 /* Resources */,
-				42936A6E1BADE2D9005C6C37 /* Embed Watch Content */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				42936A6D1BADE2D8005C6C37 /* PBXTargetDependency */,
-				42936A721BADE352005C6C37 /* PBXTargetDependency */,
-			);
-			name = "Light Switch WatchKit Extension";
-			productName = "Light Switch WatchKit Extension";
-			productReference = 4239F1181B2493DF000D2EC9 /* Light Switch.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
-		4239F1231B2493E0000D2EC9 /* Light Switch WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4239F1331B2493E1000D2EC9 /* Build configuration list for PBXNativeTarget "Light Switch WatchKit App" */;
-			buildPhases = (
-				4239F1221B2493E0000D2EC9 /* Resources */,
-				42936A671BADDF35005C6C37 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				42936A621BADDF35005C6C37 /* PBXTargetDependency */,
-			);
-			name = "Light Switch WatchKit App";
-			productName = "Light Switch WatchKit App";
-			productReference = 4239F1241B2493E0000D2EC9 /* Light Switch.app */;
+			name = "Light Switch Watch";
+			productName = "Light Switch Watch";
+			productReference = 425ABE3C1BB43B3100E2DAD9 /* Light Switch Watch.app */;
 			productType = "com.apple.product-type.application.watchapp2";
+		};
+		425ABE471BB43B3100E2DAD9 /* Light Switch Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 425ABE5B1BB43B3200E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch Watch Extension" */;
+			buildPhases = (
+				425ABE441BB43B3100E2DAD9 /* Sources */,
+				425ABE451BB43B3100E2DAD9 /* Frameworks */,
+				425ABE461BB43B3100E2DAD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Light Switch Watch Extension";
+			productName = "Light Switch Watch Extension";
+			productReference = 425ABE481BB43B3100E2DAD9 /* Light Switch Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4239F0E31B249261000D2EC9 /* Project object */ = {
+		425ABE1D1BB43AEC00E2DAD9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "井川 雅央";
 				TargetAttributes = {
-					4239F0EA1B249261000D2EC9 = {
-						CreatedOnToolsVersion = 6.3.2;
+					425ABE241BB43AED00E2DAD9 = {
+						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BLJ9859GQ8;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -344,21 +240,17 @@
 							};
 						};
 					};
-					4239F0FF1B249261000D2EC9 = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 4239F0EA1B249261000D2EC9;
-					};
-					4239F1171B2493DF000D2EC9 = {
-						CreatedOnToolsVersion = 6.3.2;
+					425ABE3B1BB43B3100E2DAD9 = {
+						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BLJ9859GQ8;
 					};
-					4239F1231B2493E0000D2EC9 = {
-						CreatedOnToolsVersion = 6.3.2;
+					425ABE471BB43B3100E2DAD9 = {
+						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BLJ9859GQ8;
 					};
 				};
 			};
-			buildConfigurationList = 4239F0E61B249261000D2EC9 /* Build configuration list for PBXProject "Light Switch" */;
+			buildConfigurationList = 425ABE201BB43AEC00E2DAD9 /* Build configuration list for PBXProject "Light Switch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -366,136 +258,107 @@
 				en,
 				Base,
 			);
-			mainGroup = 4239F0E21B249261000D2EC9;
-			productRefGroup = 4239F0EC1B249261000D2EC9 /* Products */;
+			mainGroup = 425ABE1C1BB43AEC00E2DAD9;
+			productRefGroup = 425ABE261BB43AED00E2DAD9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4239F0EA1B249261000D2EC9 /* Light Switch */,
-				4239F0FF1B249261000D2EC9 /* Light SwitchTests */,
-				4239F1171B2493DF000D2EC9 /* Light Switch WatchKit Extension */,
-				4239F1231B2493E0000D2EC9 /* Light Switch WatchKit App */,
+				425ABE241BB43AED00E2DAD9 /* Light Switch */,
+				425ABE3B1BB43B3100E2DAD9 /* Light Switch Watch */,
+				425ABE471BB43B3100E2DAD9 /* Light Switch Watch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4239F0E91B249261000D2EC9 /* Resources */ = {
+		425ABE231BB43AED00E2DAD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				423BA20A1BA49C00003E768F /* README.md in Resources */,
-				4239F0F61B249261000D2EC9 /* Main.storyboard in Resources */,
-				4239F0FB1B249261000D2EC9 /* LaunchScreen.xib in Resources */,
-				4239F0F81B249261000D2EC9 /* Images.xcassets in Resources */,
+				425ABE331BB43AED00E2DAD9 /* LaunchScreen.storyboard in Resources */,
+				425ABE301BB43AED00E2DAD9 /* Assets.xcassets in Resources */,
+				425ABE2E1BB43AED00E2DAD9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4239F0FE1B249261000D2EC9 /* Resources */ = {
+		425ABE3A1BB43B3100E2DAD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425ABE421BB43B3100E2DAD9 /* Assets.xcassets in Resources */,
+				425ABE401BB43B3100E2DAD9 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4239F1161B2493DF000D2EC9 /* Resources */ = {
+		425ABE461BB43B3100E2DAD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4239F1221B2493E0000D2EC9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4239F12D1B2493E0000D2EC9 /* Interface.storyboard in Resources */,
-				4239F12F1B2493E1000D2EC9 /* Images.xcassets in Resources */,
+				425ABE561BB43B3200E2DAD9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4239F0E71B249261000D2EC9 /* Sources */ = {
+		425ABE211BB43AED00E2DAD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4239F0F31B249261000D2EC9 /* ViewController.swift in Sources */,
-				4239F0F11B249261000D2EC9 /* AppDelegate.swift in Sources */,
-				4239F1131B2492B9000D2EC9 /* BLEUtility.swift in Sources */,
-				4239F1111B24929C000D2EC9 /* Discover.swift in Sources */,
+				425ABE661BB43D5000E2DAD9 /* Discover.swift in Sources */,
+				425ABE2B1BB43AED00E2DAD9 /* ViewController.swift in Sources */,
+				425ABE291BB43AED00E2DAD9 /* AppDelegate.swift in Sources */,
+				425ABE641BB43D1000E2DAD9 /* BLEUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4239F0FC1B249261000D2EC9 /* Sources */ = {
+		425ABE441BB43B3100E2DAD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4239F1071B249261000D2EC9 /* Light_SwitchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4239F1141B2493DF000D2EC9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4239F11D1B2493DF000D2EC9 /* InterfaceController.swift in Sources */,
-				4239F11F1B2493DF000D2EC9 /* GlanceController.swift in Sources */,
+				425ABE501BB43B3200E2DAD9 /* ExtensionDelegate.swift in Sources */,
+				425ABE541BB43B3200E2DAD9 /* ComplicationController.swift in Sources */,
+				425ABE4E1BB43B3200E2DAD9 /* InterfaceController.swift in Sources */,
+				425ABE521BB43B3200E2DAD9 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4232DEE51BB210DB00662C4F /* PBXTargetDependency */ = {
+		425ABE4B1BB43B3100E2DAD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4239F1171B2493DF000D2EC9 /* Light Switch WatchKit Extension */;
-			targetProxy = 4232DEE41BB210DB00662C4F /* PBXContainerItemProxy */;
+			target = 425ABE471BB43B3100E2DAD9 /* Light Switch Watch Extension */;
+			targetProxy = 425ABE4A1BB43B3100E2DAD9 /* PBXContainerItemProxy */;
 		};
-		4239F1021B249261000D2EC9 /* PBXTargetDependency */ = {
+		425ABE591BB43B3200E2DAD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4239F0EA1B249261000D2EC9 /* Light Switch */;
-			targetProxy = 4239F1011B249261000D2EC9 /* PBXContainerItemProxy */;
-		};
-		42936A621BADDF35005C6C37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4239F1171B2493DF000D2EC9 /* Light Switch WatchKit Extension */;
-			targetProxy = 42936A611BADDF35005C6C37 /* PBXContainerItemProxy */;
-		};
-		42936A6D1BADE2D8005C6C37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4239F1231B2493E0000D2EC9 /* Light Switch WatchKit App */;
-			targetProxy = 42936A6C1BADE2D8005C6C37 /* PBXContainerItemProxy */;
-		};
-		42936A721BADE352005C6C37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4239F0EA1B249261000D2EC9 /* Light Switch */;
-			targetProxy = 42936A711BADE352005C6C37 /* PBXContainerItemProxy */;
+			target = 425ABE3B1BB43B3100E2DAD9 /* Light Switch Watch */;
+			targetProxy = 425ABE581BB43B3200E2DAD9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4239F0F41B249261000D2EC9 /* Main.storyboard */ = {
+		425ABE2C1BB43AED00E2DAD9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4239F0F51B249261000D2EC9 /* Base */,
+				425ABE2D1BB43AED00E2DAD9 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		4239F0F91B249261000D2EC9 /* LaunchScreen.xib */ = {
+		425ABE311BB43AED00E2DAD9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4239F0FA1B249261000D2EC9 /* Base */,
+				425ABE321BB43AED00E2DAD9 /* Base */,
 			);
-			name = LaunchScreen.xib;
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		4239F12B1B2493E0000D2EC9 /* Interface.storyboard */ = {
+		425ABE3E1BB43B3100E2DAD9 /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4239F12C1B2493E0000D2EC9 /* Base */,
+				425ABE3F1BB43B3100E2DAD9 /* Base */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -503,7 +366,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4239F1081B249261000D2EC9 /* Debug */ = {
+		425ABE351BB43AED00E2DAD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -520,10 +383,9 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -534,7 +396,6 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -549,7 +410,7 @@
 			};
 			name = Debug;
 		};
-		4239F1091B249261000D2EC9 /* Release */ = {
+		425ABE361BB43AED00E2DAD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -566,7 +427,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -587,84 +447,72 @@
 			};
 			name = Release;
 		};
-		4239F10B1B249261000D2EC9 /* Debug */ = {
+		425ABE381BB43AED00E2DAD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Light Switch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "Light Switch";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		4239F10C1B249261000D2EC9 /* Release */ = {
+		425ABE391BB43AED00E2DAD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Light Switch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "Light Switch";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		4239F10E1B249261000D2EC9 /* Debug */ = {
+		425ABE5C1BB43B3200E2DAD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Light SwitchTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "Light Switch";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Light Switch.app/Light Switch";
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Light Switch Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
-		4239F10F1B249261000D2EC9 /* Release */ = {
+		425ABE5D1BB43B3200E2DAD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Light SwitchTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "Light Switch";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Light Switch.app/Light Switch";
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Light Switch Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
-		4239F1341B2493E1000D2EC9 /* Debug */ = {
+		425ABE601BB43B3200E2DAD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = Light_Switch_WatchKit_Extension;
-				INFOPLIST_FILE = "Light Switch WatchKit App/Info.plist";
+				IBSC_MODULE = Light_Switch_Watch_Extension;
+				INFOPLIST_FILE = "Light Switch Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch.watchkitapp";
-				PRODUCT_NAME = "Light Switch";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -672,56 +520,16 @@
 			};
 			name = Debug;
 		};
-		4239F1351B2493E1000D2EC9 /* Release */ = {
+		425ABE611BB43B3200E2DAD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				IBSC_MODULE = Light_Switch_WatchKit_Extension;
-				INFOPLIST_FILE = "Light Switch WatchKit App/Info.plist";
+				IBSC_MODULE = Light_Switch_Watch_Extension;
+				INFOPLIST_FILE = "Light Switch Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch.watchkitapp";
-				PRODUCT_NAME = "Light Switch";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		4239F1371B2493E1000D2EC9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Light Switch WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "Light Switch";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		4239F1381B2493E1000D2EC9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = "Light Switch WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.axele.Light-Switch.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "Light Switch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -732,52 +540,40 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4239F0E61B249261000D2EC9 /* Build configuration list for PBXProject "Light Switch" */ = {
+		425ABE201BB43AEC00E2DAD9 /* Build configuration list for PBXProject "Light Switch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4239F1081B249261000D2EC9 /* Debug */,
-				4239F1091B249261000D2EC9 /* Release */,
+				425ABE351BB43AED00E2DAD9 /* Debug */,
+				425ABE361BB43AED00E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4239F10A1B249261000D2EC9 /* Build configuration list for PBXNativeTarget "Light Switch" */ = {
+		425ABE371BB43AED00E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4239F10B1B249261000D2EC9 /* Debug */,
-				4239F10C1B249261000D2EC9 /* Release */,
+				425ABE381BB43AED00E2DAD9 /* Debug */,
+				425ABE391BB43AED00E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		4239F10D1B249261000D2EC9 /* Build configuration list for PBXNativeTarget "Light SwitchTests" */ = {
+		425ABE5B1BB43B3200E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch Watch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4239F10E1B249261000D2EC9 /* Debug */,
-				4239F10F1B249261000D2EC9 /* Release */,
+				425ABE5C1BB43B3200E2DAD9 /* Debug */,
+				425ABE5D1BB43B3200E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		4239F1331B2493E1000D2EC9 /* Build configuration list for PBXNativeTarget "Light Switch WatchKit App" */ = {
+		425ABE5F1BB43B3200E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch Watch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4239F1341B2493E1000D2EC9 /* Debug */,
-				4239F1351B2493E1000D2EC9 /* Release */,
+				425ABE601BB43B3200E2DAD9 /* Debug */,
+				425ABE611BB43B3200E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4239F1361B2493E1000D2EC9 /* Build configuration list for PBXNativeTarget "Light Switch WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4239F1371B2493E1000D2EC9 /* Debug */,
-				4239F1381B2493E1000D2EC9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4239F0E31B249261000D2EC9 /* Project object */;
+	rootObject = 425ABE1D1BB43AEC00E2DAD9 /* Project object */;
 }

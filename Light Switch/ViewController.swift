@@ -2,16 +2,16 @@
 //  ViewController.swift
 //  Light Switch
 //
-//  Created by 井川 雅央 on 2015/06/04.
-//  Copyright (c) 2015年 井川 雅央. All rights reserved.
+//  Created by 井川 雅央 on 2015/09/24.
+//  Copyright © 2015年 井川 雅央. All rights reserved.
 //
 
 import UIKit
 import CoreBluetooth
 import WatchConnectivity
 
-class ViewController: UIViewController, DiscoveryDelegate, WCSessionDelegate {
-    
+class ViewController: UIViewController, DiscoveryDelegate {
+
     @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var temperatureLabel: UILabel!
     
@@ -21,7 +21,6 @@ class ViewController: UIViewController, DiscoveryDelegate, WCSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
         dispatch_async(dispatch_get_main_queue(), { () in
             self.btnLabel.highlighted = true
@@ -32,21 +31,19 @@ class ViewController: UIViewController, DiscoveryDelegate, WCSessionDelegate {
         discovery = blDiscoverySharedInstance
         discovery.delegate = self
         
+        /*
         if (WCSession.isSupported()) {
             let session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
-        }
-        
-
+        }*/
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     // MARK:delegate - Discovery
     
     func didConnect() {
@@ -94,32 +91,7 @@ class ViewController: UIViewController, DiscoveryDelegate, WCSessionDelegate {
             discovery.readState()
         }
     }
-    
-    //MARK: WCSession - delegate
-    
-    // UserInfo Message
-    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
-        /*
-        dispatch_async(dispatch_get_main_queue(), { () in
-        self.resultTextView!.text = String(format: "%s: %@", arguments: [ __FUNCTION__, message])
-        })*/
-/*        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let vc:ViewController? = appDel.window?.rootViewController as? ViewController
-        vc?.sendButton(self)
-        let title : String? = vc?.btnLabel.titleLabel?.text
-*/
-        sendButton(self)
-        let title : String = self.btnLabel.titleLabel!.text!
-        let applicationDict:[String:AnyObject]
-        if (title == "On") {
-            // 送信側
-            applicationDict = ["fromApp": "Off"]
-        }else{
-            applicationDict = ["fromApp": "On"]
-        }
         
-        WCSession.defaultSession().transferUserInfo(applicationDict)
-    }
-    
+
 }
 

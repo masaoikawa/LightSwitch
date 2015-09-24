@@ -1,9 +1,9 @@
 //
 //  GlanceController.swift
-//  Light Switch WatchKit Extension
+//  Light Switch Watch Extension
 //
-//  Created by 井川 雅央 on 2015/06/07.
-//  Copyright (c) 2015年 井川 雅央. All rights reserved.
+//  Created by 井川 雅央 on 2015/09/24.
+//  Copyright © 2015年 井川 雅央. All rights reserved.
 //
 
 import WatchKit
@@ -21,10 +21,6 @@ class GlanceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-    }
-
-    @IBAction func sendOn() {
-        
     }
 
     override func didDeactivate() {

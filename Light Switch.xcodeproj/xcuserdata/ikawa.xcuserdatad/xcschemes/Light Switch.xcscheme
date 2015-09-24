@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4239F0EA1B249261000D2EC9"
+               BlueprintIdentifier = "425ABE241BB43AED00E2DAD9"
                BuildableName = "Light Switch.app"
                BlueprintName = "Light Switch"
-               ReferencedContainer = "container:Light Switch.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4239F0FF1B249261000D2EC9"
-               BuildableName = "Light Switch.xctest"
-               BlueprintName = "Light SwitchTests"
                ReferencedContainer = "container:Light Switch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,21 +28,11 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4239F0FF1B249261000D2EC9"
-               BuildableName = "Light Switch.xctest"
-               BlueprintName = "Light SwitchTests"
-               ReferencedContainer = "container:Light Switch.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4239F0EA1B249261000D2EC9"
+            BlueprintIdentifier = "425ABE241BB43AED00E2DAD9"
             BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch"
             ReferencedContainer = "container:Light Switch.xcodeproj">
@@ -79,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4239F0EA1B249261000D2EC9"
+            BlueprintIdentifier = "425ABE241BB43AED00E2DAD9"
             BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch"
             ReferencedContainer = "container:Light Switch.xcodeproj">
@@ -98,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4239F0EA1B249261000D2EC9"
+            BlueprintIdentifier = "425ABE241BB43AED00E2DAD9"
             BuildableName = "Light Switch.app"
             BlueprintName = "Light Switch"
             ReferencedContainer = "container:Light Switch.xcodeproj">

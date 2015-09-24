@@ -1,13 +1,12 @@
 //
 //  Discover.swift
-//  BLETest
+//  Light Switch
 //
-//  Created by 井川 雅央 on 2015/06/04.
-//  Copyright (c) 2015年 井川 雅央. All rights reserved.
+//  Created by 井川 雅央 on 2015/09/24.
+//  Copyright © 2015年 井川 雅央. All rights reserved.
 //
 
 import Foundation
-import UIKit
 import CoreBluetooth
 
 let blDiscoverySharedInstance = BLDiscovery()
@@ -56,20 +55,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
         
         self.peripheral = dict[CBCentralManagerRestoredStatePeripheralsKey] as? CBPeripheral
-        /*
-        if let peripherals:[CBPeripheral] = dict[CBCentralManagerRestoredStatePeripheralsKey] as! [CBPeripheral]! {
-            println("willRestoreState")
-            for peripheral in peripherals {
-                if(peripheral.name != nil && peripheral.name == DISCOVERD){
-                    central.stopScan()
-                    println("Find " + DISCOVERD)
-                    delegate?.didUpdateState?("Find " + DISCOVERD)
-                    self.peripheral = peripheral;
-                    central.connectPeripheral(self.peripheral, options: nil)
-                }
-            }
-        }
-        */
+        
         return
     }
     
@@ -83,6 +69,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         let dataOn = NSData(bytes: &rawArray, length: rawArray.count)
         BLEUtilitySwift.writeCharacteristic(peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOn)
     }
+    
     func sendOff(){
         print("sendOff")
         // OFFデータ
@@ -90,6 +77,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         let dataOff = NSData(bytes: &rawArray, length: rawArray.count)
         BLEUtilitySwift.writeCharacteristic(peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOff)
     }
+    
     func readState(){
         print("readStat")
         
@@ -255,7 +243,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         print("didUpdateNotificationStateForCharacteristic \(characteristic.UUID), error = \(error)");
-
+        
         // ReadValue
         let temp = characteristic.value
         print("VAL: \(temp)")
@@ -272,9 +260,9 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         results.append("\(str)\n")
         
         //delegate?.didUpdateState!("updateNotification")
-
+        
     }
-
+    
     func aarrayToString() -> String {
         var str: String! = ""
         
@@ -285,10 +273,6 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         return str
     }
     
-    
-    
-    
-    
-    
-    
 }
+
+
