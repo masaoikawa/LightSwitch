@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreBluetooth
+import WatchConnectivity
 
-class ViewController: UIViewController, DiscoveryDelegate {
+class ViewController: UIViewController, DiscoveryDelegate, WCSessionDelegate {
     
     @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -20,13 +21,24 @@ class ViewController: UIViewController, DiscoveryDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        btnLabel.highlighted = true
-        btnLabel.enabled = false
-        temperatureLabel.text = "Now Starting."
+        dispatch_async(dispatch_get_main_queue(), { () in
+            self.btnLabel.highlighted = true
+            self.btnLabel.enabled = false
+            self.temperatureLabel.text = "Now Starting."
+        })
         
         discovery = blDiscoverySharedInstance
         discovery.delegate = self
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,19 +50,25 @@ class ViewController: UIViewController, DiscoveryDelegate {
     // MARK:delegate - Discovery
     
     func didConnect() {
-        btnLabel.highlighted = false
-        btnLabel.enabled = true
-        temperatureLabel.text = "Connected"
+        dispatch_async(dispatch_get_main_queue(), { () in
+            self.btnLabel.highlighted = false
+            self.btnLabel.enabled = true
+            self.temperatureLabel.text = "Connected"
+        })
     }
     
     func didDisconnect() {
-        btnLabel.highlighted = true
-        btnLabel.enabled = false
-        temperatureLabel.text = "DisConnected"
+        dispatch_async(dispatch_get_main_queue(), { () in
+            self.btnLabel.highlighted = true
+            self.btnLabel.enabled = false
+            self.temperatureLabel.text = "DisConnected"
+        })
     }
     
     func didUpdateState(message: String) {
-        temperatureLabel.text = message
+        dispatch_async(dispatch_get_main_queue(), { () in
+            self.temperatureLabel.text = message
+        })
     }
     
     
@@ -59,18 +77,48 @@ class ViewController: UIViewController, DiscoveryDelegate {
     @IBAction func sendButton(sender: AnyObject) {
         
         if !discovery.switchState.boolValue {
-            btnLabel.setTitle("Off", forState: .Normal)
+            dispatch_async(dispatch_get_main_queue(), { () in
+                self.btnLabel.setTitle("Off", forState: .Normal)
+            })
             
             discovery.sendOn()
             discovery.switchState = true
             discovery.readState()
         } else {
-            btnLabel.setTitle("On", forState: .Normal)
+            dispatch_async(dispatch_get_main_queue(), { () in
+                self.btnLabel.setTitle("On", forState: .Normal)
+            })
             
             discovery.sendOff()
             discovery.switchState = false
             discovery.readState()
         }
+    }
+    
+    //MARK: WCSession - delegate
+    
+    // UserInfo Message
+    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
+        /*
+        dispatch_async(dispatch_get_main_queue(), { () in
+        self.resultTextView!.text = String(format: "%s: %@", arguments: [ __FUNCTION__, message])
+        })*/
+/*        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let vc:ViewController? = appDel.window?.rootViewController as? ViewController
+        vc?.sendButton(self)
+        let title : String? = vc?.btnLabel.titleLabel?.text
+*/
+        sendButton(self)
+        let title : String = self.btnLabel.titleLabel!.text!
+        let applicationDict:[String:AnyObject]
+        if (title == "On") {
+            // 送信側
+            applicationDict = ["fromApp": "Off"]
+        }else{
+            applicationDict = ["fromApp": "On"]
+        }
+        
+        WCSession.defaultSession().transferUserInfo(applicationDict)
     }
     
 }

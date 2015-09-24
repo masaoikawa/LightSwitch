@@ -337,6 +337,7 @@
 				TargetAttributes = {
 					4239F0EA1B249261000D2EC9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = BLJ9859GQ8;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -349,9 +350,11 @@
 					};
 					4239F1171B2493DF000D2EC9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = BLJ9859GQ8;
 					};
 					4239F1231B2493E0000D2EC9 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = BLJ9859GQ8;
 					};
 				};
 			};

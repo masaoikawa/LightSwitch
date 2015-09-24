@@ -31,12 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         blDiscoverySharedInstance.setupCentralManager()
         
-        if (WCSession.isSupported()) {
-            session = WCSession.defaultSession()
-            session!.delegate = self
-            session!.activateSession()
-        }
-        
         return true
     }
     
@@ -66,30 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func session(session: WCSession, didReceiveMessageData messageData: NSData, replyHandler: (NSData) -> Void) {
 
-
-    }
     
-    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
-        _ = applicationContext 
-        //var _counterValue = info["countValue"] as! String
-        
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let vc:ViewController? = appDel.window?.rootViewController as? ViewController
-        vc?.sendButton(self)
-        let title : String? = vc?.btnLabel.titleLabel?.text
-        
-        
-        let applicationDict:[String:AnyObject]
-        if (title == "On") {
-            // 送信側
-            applicationDict = ["fromApp": "Off"]
-        }else{
-            applicationDict = ["fromApp": "On"]
-        }
-        try! WCSession.defaultSession().updateApplicationContext(applicationDict)
-    }
     
 }
 

@@ -15,18 +15,9 @@ class InterfaceController: WKInterfaceController {
     
     @IBOutlet weak var btnLabel: WKInterfaceButton?
     
-    var session : WCSession?
-    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        /*// Configure interface objects here.
-        if (WCSession.isSupported()) {
-            let session = WCSession.defaultSession()
-            session.delegate = self;
-            session.activateSession()
-        }*/
-    }
+            }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
@@ -42,7 +33,7 @@ class InterfaceController: WKInterfaceController {
         let data:[String : AnyObject] = ["countValue": "\(1)"]   //This is the data you will send
         
         // 送信側
-        try! WCSession.defaultSession().updateApplicationContext( data )
+        WCSession.defaultSession().transferUserInfo( data )
         
         /*
         WKInterfaceController.openParentApplication(["countValue": "\(1)"]) {
@@ -52,13 +43,13 @@ class InterfaceController: WKInterfaceController {
             }
         }
         */
+        
     }
     /*
-    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
-        let title = applicationContext["fromApp"] as! String
+    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
+        let title = userInfo["fromApp"] as! String
         self.btnLabel?.setTitle( title )
-    }
-    */
+    }*/
     
     
 }
