@@ -52,15 +52,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         */
         if (WCSession.defaultSession().reachable) {
+            WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
             WCSession.defaultSession().sendMessage(data,
                 replyHandler: { userInfo in
                     print("Info Received: \(userInfo)")
                     self.btnLabel?.setTitle( userInfo["fromApp"] as? String )
+                    WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Success)
                 },
                 errorHandler: { (error:NSError) -> Void in
                     print("WatchKit communication error: \(error.localizedDescription)")
+                    WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Failure)
             })
-            
+        }else{
+            WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Failure)
         }
     }
     

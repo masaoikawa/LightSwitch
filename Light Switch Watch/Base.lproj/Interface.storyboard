@@ -30,8 +30,8 @@
                 <glanceController spacing="0.0" bottomTemplateType="body6Footer" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="Light_Switch_Watch" customModuleProvider="target">
                     <items>
                         <group alignment="left" id="gv7-I2-MZq"/>
-                        <label alignment="left" text="          Light Switch      " baselineAdjustment="alignCenters" id="mqN-Ww-BWV"/>
-                        <label alignment="left" text="Footer" id="bau-Ri-efg"/>
+                        <label alignment="left" text="         Light Switch      " baselineAdjustment="alignCenters" id="mqN-Ww-BWV"/>
+                        <label alignment="left" text="produced by ikawa." id="bau-Ri-efg"/>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                 </glanceController>

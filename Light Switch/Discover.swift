@@ -12,10 +12,13 @@ import CoreBluetooth
 let blDiscoverySharedInstance = BLDiscovery()
 
 private let DISCOVERD:String        =       "nRF5x" //"Biscuit" //
+private let DISCOVERD_F:String      =       "Biscuit" //"nRF5x" //
 private let UUID_DISCOVERD:String   =       "844BC615-70B2-D539-5C27-5E940A674FA1"
 private let UUID_VSP_SERVICE:String =       "713D0000-503E-4C75-BA94-3148F18D941E" //VSP
 private let UUID_RX:String          =       "713D0002-503E-4C75-BA94-3148F18D941E" //RX
 private let UUID_TX:String          =		"713D0003-503E-4C75-BA94-3148F18D941E" //TX
+
+private let UUID_Biscuit            =       "F39462F0-22AC-E387-EBE0-EC6870A32892"
 
 
 @objc protocol DiscoveryDelegate{
@@ -122,7 +125,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         print("Start scanning")
         delegate?.didUpdateState?("Start scanning")
         //centralManager.scanForPeripheralsWithServices(nil, options:nil)
-        centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(bool: true)])
+        centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE),CBUUID(string: UUID_DISCOVERD)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(bool: true)])
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
@@ -133,10 +136,10 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         
         delegate?.didUpdateState?("Discovered \(peripheral.name)")
         
-        if(peripheral.name != nil && peripheral.name == DISCOVERD){
+        if(peripheral.name != nil && (peripheral.name == DISCOVERD || peripheral.name == DISCOVERD_F)){
             central.stopScan()
-            print("Find " + DISCOVERD)
-            delegate?.didUpdateState?("Find " + DISCOVERD)
+            print("Find " + peripheral.name!)
+            delegate?.didUpdateState?("Find " + peripheral.name!)
             self.peripheral = peripheral;
             central.connectPeripheral(self.peripheral!, options: nil)
         }
