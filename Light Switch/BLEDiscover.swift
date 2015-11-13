@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-let blDiscoverySharedInstance = BLDiscovery()
+let BLEDiscoverySharedInstance = BLEDiscovery()
 
 private let DISCOVERD:String        =       "nRF5x" //"Biscuit" //
 private let DISCOVERD_F:String      =       "Biscuit" //"nRF5x" //
@@ -20,14 +20,15 @@ private let UUID_TX:String          =		"713D0003-503E-4C75-BA94-3148F18D941E" //
 
 private let UUID_Biscuit            =       "F39462F0-22AC-E387-EBE0-EC6870A32892"
 
-
+// MARK:protcol DiscoveryDelegate
 @objc protocol DiscoveryDelegate{
     optional func didConnect()
     optional func didDisconnect()
     optional func didUpdateState(message : String)
 }
 
-class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
+// MARK:class BLEDiscovery
+class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     
     // MARK:property
     var delegate: DiscoveryDelegate?
@@ -51,7 +52,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         let options: Dictionary = [
             CBCentralManagerOptionRestoreIdentifierKey: "myKey"
         ]
-        print("Initializing central manager")
+        print("Initializing central manager", terminator: "")
         centralManager = CBCentralManager(delegate: self, queue: centralQueue, options: options)
     }
     
@@ -66,7 +67,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     // MARK:Public Function
     
     func sendOn(){
-        print("sendON")
+        print("sendON", terminator: "")
         //	ONデータ
         var rawArray:[UInt8] = [0x01, 0x01]
         let dataOn = NSData(bytes: &rawArray, length: rawArray.count)
@@ -74,7 +75,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     }
     
     func sendOff(){
-        print("sendOff")
+        print("sendOff", terminator: "")
         // OFFデータ
         var rawArray = [0x01, 0x00]
         let dataOff = NSData(bytes: &rawArray, length: rawArray.count)
@@ -82,7 +83,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     }
     
     func readState(){
-        print("readStat")
+        print("readStat", terminator: "")
         
         BLEUtilitySwift.readCharacteristic(peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
     }
@@ -90,55 +91,55 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     // MARK:delegate - centralManager
     
     func centralManagerDidUpdateState(central: CBCentralManager) {
-        print("centralManagerDidUpdateState")
+        print("centralManagerDidUpdateState", terminator: "")
         
         switch (central.state) {
         case .PoweredOff:
-            print("CoreBluetooth BLE hardware is powered off")
+            print("CoreBluetooth BLE hardware is powered off", terminator: "")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is powered off")
             break
         case .PoweredOn:
-            print("CoreBluetooth BLE hardware is powered on and ready")
+            print("CoreBluetooth BLE hardware is powered on and ready", terminator: "")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is powered on and ready")
             self.startScanning()
             break
         case .Resetting:
-            print("CoreBluetooth BLE hardware is resetting")
+            print("CoreBluetooth BLE hardware is resetting", terminator: "")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is resetting")
             break
         case .Unauthorized:
-            print("CoreBluetooth BLE state is unauthorized")
+            print("CoreBluetooth BLE state is unauthorized", terminator: "")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is unauthorized")
             break
         case .Unknown:
-            print("CoreBluetooth BLE state is unknown");
+            print("CoreBluetooth BLE state is unknown", terminator: "");
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is unknown")
             break
         case .Unsupported:
-            print("CoreBluetooth BLE hardware is unsupported on this platform");
+            print("CoreBluetooth BLE hardware is unsupported on this platform", terminator: "");
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is unsupported on this platform")
             break
         }
     }
     
     func startScanning(){
-        print("Start scanning")
+        print("Start scanning", terminator: "")
         delegate?.didUpdateState?("Start scanning")
         //centralManager.scanForPeripheralsWithServices(nil, options:nil)
         centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE),CBUUID(string: UUID_DISCOVERD)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(bool: true)])
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print("Discovered \(peripheral.name)")
-        print("identifier \(peripheral.identifier)")
-        print("services \(peripheral.services)")
-        print("RSSI \(RSSI)")
+        print("Discovered \(peripheral.name)", terminator: "")
+        print("identifier \(peripheral.identifier)", terminator: "")
+        print("services \(peripheral.services)", terminator: "")
+        print("RSSI \(RSSI)", terminator: "")
         
         delegate?.didUpdateState?("Discovered \(peripheral.name)")
         
         if(peripheral.name != nil && (peripheral.name == DISCOVERD || peripheral.name == DISCOVERD_F)){
             central.stopScan()
-            print("Find " + peripheral.name!)
+            print("Find " + peripheral.name!, terminator: "")
             delegate?.didUpdateState?("Find " + peripheral.name!)
             self.peripheral = peripheral;
             central.connectPeripheral(self.peripheral!, options: nil)
@@ -150,12 +151,12 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         self.peripheral!.delegate = self;
         let UUID = CBUUID(string: UUID_VSP_SERVICE)
         self.peripheral!.discoverServices([UUID])
-        print("Connected")
+        print("Connected", terminator: "")
         delegate?.didConnect?()
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        print("Disconnected")
+        print("Disconnected", terminator: "")
         
         self.peripheral = nil;
         
@@ -182,7 +183,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         //println("Hello from deligate \(peripheral.name)");
         
         for aService in peripheral.services!{
-            print("Service UUID: \((aService ).UUID )")
+            print("Service UUID: \((aService ).UUID )", terminator: "")
             //delegate?.didUpdateState?("Service UUID: \((aService as! CBService).UUID )")
             peripheral.discoverCharacteristics(nil, forService: aService )
         }
@@ -216,7 +217,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     }
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("didWriteValueForCharacteristic \(characteristic.UUID) error = \(error)");
+        print("didWriteValueForCharacteristic \(characteristic.UUID) error = \(error)", terminator: "");
     }
     
     var str: String! = "something"
@@ -227,7 +228,7 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
             
             // ReadValue
             let temp = characteristic.value
-            print("VAL: \(temp)")
+            print("VAL: \(temp)", terminator: "")
             
             str = " \(temp) "
             
@@ -245,11 +246,11 @@ class BLDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("didUpdateNotificationStateForCharacteristic \(characteristic.UUID), error = \(error)");
+        print("didUpdateNotificationStateForCharacteristic \(characteristic.UUID), error = \(error)", terminator: "");
         
         // ReadValue
         let temp = characteristic.value
-        print("VAL: \(temp)")
+        print("VAL: \(temp)", terminator: "")
         
         str = " \(temp) "
         

@@ -15,7 +15,7 @@ class ViewController: UIViewController, DiscoveryDelegate {
     @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var temperatureLabel: UILabel!
     
-    internal var discovery: BLDiscovery!
+    internal var discovery: BLEDiscovery!
     
     // MARK:delegate - ViewController
     
@@ -28,7 +28,7 @@ class ViewController: UIViewController, DiscoveryDelegate {
             self.temperatureLabel.text = "Now Starting."
         })
         
-        discovery = blDiscoverySharedInstance
+        discovery = BLEDiscoverySharedInstance
         discovery.delegate = self
         
         /*

@@ -21,8 +21,8 @@
 		425ABE541BB43B3200E2DAD9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE531BB43B3200E2DAD9 /* ComplicationController.swift */; };
 		425ABE561BB43B3200E2DAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425ABE551BB43B3200E2DAD9 /* Assets.xcassets */; };
 		425ABE5A1BB43B3200E2DAD9 /* Light Switch Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 425ABE3C1BB43B3100E2DAD9 /* Light Switch Watch.app */; };
-		425ABE641BB43D1000E2DAD9 /* BLEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */; settings = {ASSET_TAGS = (); }; };
-		425ABE661BB43D5000E2DAD9 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE651BB43D5000E2DAD9 /* Discover.swift */; settings = {ASSET_TAGS = (); }; };
+		425ABE641BB43D1000E2DAD9 /* BLEUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */; };
+		425ABE661BB43D5000E2DAD9 /* BLEDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ABE651BB43D5000E2DAD9 /* BLEDiscover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,7 @@
 		425ABE551BB43B3200E2DAD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		425ABE571BB43B3200E2DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEUtility.swift; sourceTree = "<group>"; };
-		425ABE651BB43D5000E2DAD9 /* Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
+		425ABE651BB43D5000E2DAD9 /* BLEDiscover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDiscover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +133,12 @@
 			children = (
 				425ABE281BB43AED00E2DAD9 /* AppDelegate.swift */,
 				425ABE2A1BB43AED00E2DAD9 /* ViewController.swift */,
-				425ABE2C1BB43AED00E2DAD9 /* Main.storyboard */,
-				425ABE2F1BB43AED00E2DAD9 /* Assets.xcassets */,
-				425ABE311BB43AED00E2DAD9 /* LaunchScreen.storyboard */,
-				425ABE341BB43AED00E2DAD9 /* Info.plist */,
+				425ABE651BB43D5000E2DAD9 /* BLEDiscover.swift */,
 				425ABE631BB43D1000E2DAD9 /* BLEUtility.swift */,
-				425ABE651BB43D5000E2DAD9 /* Discover.swift */,
+				425ABE2C1BB43AED00E2DAD9 /* Main.storyboard */,
+				425ABE311BB43AED00E2DAD9 /* LaunchScreen.storyboard */,
+				425ABE2F1BB43AED00E2DAD9 /* Assets.xcassets */,
+				425ABE341BB43AED00E2DAD9 /* Info.plist */,
 			);
 			path = "Light Switch";
 			sourceTree = "<group>";
@@ -228,6 +228,7 @@
 		425ABE1D1BB43AEC00E2DAD9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "井川 雅央";
 				TargetAttributes = {
@@ -305,7 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				425ABE661BB43D5000E2DAD9 /* Discover.swift in Sources */,
+				425ABE661BB43D5000E2DAD9 /* BLEDiscover.swift in Sources */,
 				425ABE2B1BB43AED00E2DAD9 /* ViewController.swift in Sources */,
 				425ABE291BB43AED00E2DAD9 /* AppDelegate.swift in Sources */,
 				425ABE641BB43D1000E2DAD9 /* BLEUtility.swift in Sources */,
@@ -556,6 +557,7 @@
 				425ABE391BB43AED00E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		425ABE5B1BB43B3200E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch Watch Extension" */ = {
 			isa = XCConfigurationList;
@@ -564,6 +566,7 @@
 				425ABE5D1BB43B3200E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		425ABE5F1BB43B3200E2DAD9 /* Build configuration list for PBXNativeTarget "Light Switch Watch" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +575,7 @@
 				425ABE611BB43B3200E2DAD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
