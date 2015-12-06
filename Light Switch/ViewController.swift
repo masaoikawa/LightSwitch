@@ -24,19 +24,13 @@ class ViewController: UIViewController, DiscoveryDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         dispatch_async(dispatch_get_main_queue(), { () in
             self.btnLabel.highlighted = true
-            self.btnLabel.enabled = false
+            self.btnLabel.enabled = true//false
             self.temperatureLabel.text = "Now Starting."
         })
         
         discovery = BLEDiscoverySharedInstance
         discovery.delegate = self
         
-        /*
-        if (WCSession.isSupported()) {
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-        }*/
     }
 
     override func didReceiveMemoryWarning() {
