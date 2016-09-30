@@ -11,17 +11,22 @@ import Foundation
 import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+   // @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+
     
     @IBOutlet weak var btnLabel: WKInterfaceButton?
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         // Configure interface objects here.
         if (WCSession.isSupported()) {
-            let session = WCSession.defaultSession()
+            let session = WCSession.default()
             session.delegate = self
-            session.activateSession()
+            session.activate()
         }
 
     }
@@ -38,7 +43,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBAction func sendOn() {
         //Send count to parent application
-        let data:[String : AnyObject] = ["countValue": "\(1)"]   //This is the data you will send
+        let data:[String : AnyObject] = ["countValue": "\(1)" as AnyObject]   //This is the data you will send
         
         // 送信側
         //WCSession.defaultSession().transferUserInfo( data )
@@ -51,20 +56,20 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         }
         */
-        if (WCSession.defaultSession().reachable) {
-            WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
-            WCSession.defaultSession().sendMessage(data,
-                replyHandler: { userInfo in
+        if (WCSession.default().isReachable) {
+            WKInterfaceDevice.current().play(WKHapticType.click)
+            WCSession.default().sendMessage(data,
+                replyHandler: { (userInfo) -> Void in
                     print("Info Received: \(userInfo)")
                     self.btnLabel?.setTitle( userInfo["fromApp"] as? String )
-                    WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Success)
+                    WKInterfaceDevice.current().play(WKHapticType.success)
                 },
-                errorHandler: { (error:NSError) -> Void in
+                errorHandler: { (error:Error) -> Void in
                     print("WatchKit communication error: \(error.localizedDescription)")
-                    WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Failure)
+                    WKInterfaceDevice.current().play(WKHapticType.failure)
             })
         }else{
-            WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Failure)
+            WKInterfaceDevice.current().play(WKHapticType.failure)
         }
     }
     

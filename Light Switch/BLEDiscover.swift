@@ -17,23 +17,26 @@ private let UUID_DISCOVERD:String   =       "844BC615-70B2-D539-5C27-5E940A674FA
 private let UUID_VSP_SERVICE:String =       "713D0000-503E-4C75-BA94-3148F18D941E" //VSP
 private let UUID_RX:String          =       "713D0002-503E-4C75-BA94-3148F18D941E" //RX
 private let UUID_TX:String          =		"713D0003-503E-4C75-BA94-3148F18D941E" //TX
+private let UUID_nRF5x:String		=		"966C13EE-F4D0-0062-3FCA-E5DAE8FAC178"
 
 private let UUID_Biscuit            =       "F39462F0-22AC-E387-EBE0-EC6870A32892"
 
 // MARK:protcol DiscoveryDelegate
 @objc protocol DiscoveryDelegate{
-    optional func didConnect()
-    optional func didDisconnect()
-    optional func didUpdateState(message : String)
+    @objc optional func didConnect()
+    @objc optional func didDisconnect()
+    @objc optional func didUpdateState(_ message : String)
 }
 
+
 // MARK:class BLEDiscovery
-class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
+class BLEDiscovery: NSObject, CBPeripheralDelegate, CBCentralManagerDelegate{
+    
     
     // MARK:property
     var delegate: DiscoveryDelegate?
-    var centralManager:CBCentralManager!
-    var peripheral:CBPeripheral!
+    var _centralManager:CBCentralManager!
+    var _peripheral:CBPeripheral!
     
     var results: [String]! = []
     var pauseUpdate: Bool! = false
@@ -46,9 +49,9 @@ class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         self.setupCentralManager()
     }
     
-    func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
+    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         
-        self.peripheral = dict[CBCentralManagerRestoredStatePeripheralsKey] as? CBPeripheral
+        self._peripheral = dict[CBCentralManagerRestoredStatePeripheralsKey] as? CBPeripheral
         
         return
     }
@@ -57,163 +60,234 @@ class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
     // MARK:Public Function
     
     func setupCentralManager() {
+		print("setupCentralManager:")
         //let centralQueue = dispatch_queue_create("nu.whiletrue", DISPATCH_QUEUE_SERIAL)
-        let centralQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0)
+        let centralQueue = DispatchQueue.global(qos: .default)
         let options: Dictionary = [
             CBCentralManagerOptionRestoreIdentifierKey: "myKey"
         ]
-        print("Initializing central manager")
-        centralManager = CBCentralManager(delegate: self, queue: centralQueue, options: options)
+        print("Initializing central manager:")
+        _centralManager = CBCentralManager(delegate: self, queue: centralQueue, options: options)
     }
     
     func sendOn(){
-        print("sendON")
-        if(centralManager == nil){
-            for(var i=0; self.centralManager == nil && i<1000;i++){
-                delegate?.didUpdateState?("wait centralManager serup")
+        print("sendON:")
+        if(_centralManager == nil){
+            for _ in 0 ..< 1000 {
+                delegate?.didUpdateState?("wait centralManager setup")
                 sleep(1)
             }
         }
-        if(peripheral == nil){
-            //self.startScanning()
-            for(var i=0; self.peripheral == nil && i<1000; i++){
-                delegate?.didUpdateState?("wait peripheral serup")
+        if(_peripheral == nil){
+            self.startScanning()
+            for _ in 0 ..< 1000 {
+                delegate?.didUpdateState?("wait peripheral setup")
                 sleep(1)
+				if (_peripheral.services == nil) {
+					sleep(1)
+				}else{
+					break
+				}
             }
         }
-        print("state:\(peripheral.state.rawValue)")
-        if(peripheral.state != CBPeripheralState.Connected){
-            //self.centralManager.connectPeripheral(self.peripheral!, options: nil)
-            for(var i=0; self.peripheral.state != CBPeripheralState.Connected && i<1000; i++){
-                delegate?.didUpdateState?("wait peripheral connected")
-                sleep(1)
-            }
-            sleep(1)
-        }
+		if(_peripheral.services == nil){
+			print("wait peripheral services setup")
+			for _ in 0 ..< 1000 {
+				delegate?.didUpdateState?("wait peripheral services setup")
+				if (_peripheral.services == nil) {
+					sleep(1)
+				}else{
+					break
+				}
+			}
+		}
+		if(_peripheral.services![0].characteristics == nil){
+			print("wait peripheral characteristics setup")
+			for _ in 0 ..< 1000 {
+				delegate?.didUpdateState?("wait peripheral characteristics setup")
+				if (_peripheral.services![0].characteristics == nil) {
+					sleep(1)
+				}else{
+					break
+				}
+			}
+		}
+        print("state:\(_peripheral.state.rawValue)")
+        if(_peripheral.state != CBPeripheralState.connected){
+            //centralManager.connectPeripheral(self.peripheral!, options: nil)
+			
+			delegate?.didUpdateState?("wait peripheral connected")
+			sleep(1)
+		}
         //	ONデータ
-        var rawArray:[UInt8] = [0x01, 0x01]
-        let dataOn = NSData(bytes: &rawArray, length: rawArray.count)
-        if(peripheral.state == CBPeripheralState.Connected) {
-            BLEUtilitySwift.writeCharacteristic(peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOn)
+		delegate?.didUpdateState?("connected peripheral.")
+        let rawArray:[UInt8] = [0x01, 0x01]
+        let dataOn = Data(bytes: rawArray, count: rawArray.count)
+        if(_peripheral.state == CBPeripheralState.connected) {
+			if (_peripheral.services != nil) {
+				BLEUtilitySwift.writeCharacteristic(_peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOn)
+			}else{
+				print("error (_peripheral.services nil.")
+			}
         }else{
             delegate?.didUpdateState?("error connected")
-            sleep(100)
+            sleep(1)
         }
     }
     
     func sendOff(){
-        print("sendOff")
-        if(centralManager == nil){
-            for(var i=0; self.centralManager == nil && i<1000;i++){
-                delegate?.didUpdateState?("wait centralManager serup")
-                sleep(1)
-            }
-        }
-        if(peripheral == nil){
-            //self.startScanning()
-            for(var i=0; self.peripheral == nil && i<1000; i++){
-                delegate?.didUpdateState?("wait peripheral serup")
-                sleep(1)
-            }
-        }
-        print("state:\(peripheral.state.rawValue)")
-        if(peripheral.state != CBPeripheralState.Connected){
-            //self.centralManager.connectPeripheral(self.peripheral!, options: nil)
-            for(var i=0; self.peripheral.state != CBPeripheralState.Connected && i<1000; i++){
-                delegate?.didUpdateState?("wait peripheral connected")
-                sleep(1)
-            }
-            sleep(1)
-        }
-        // OFFデータ
-        var rawArray = [0x01, 0x00]
-        let dataOff = NSData(bytes: &rawArray, length: rawArray.count)
-        if(peripheral.state == CBPeripheralState.Connected) {
-            BLEUtilitySwift.writeCharacteristic(peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOff)
-        }else{
-            delegate?.didUpdateState?("error connected")
-            sleep(100)
-        }
-    }
-    
-    func readState(){
-        print("readStat")
+        print("sendOff:")
+        //for(var i=0; self.centralManager == nil && i<1000;i += 1){
+        if (_centralManager == nil) {
+			for _ in 0 ..< 1000 {
+				delegate?.didUpdateState?("wait centralManager serup")
+				sleep(1)
+			}
+		}
+		if (_peripheral == nil) {
+			self.startScanning()
+			//for(var i=0; self.peripheral == nil && i<1000; i += 1){
+			for _ in 0 ..< 1000 {
+				delegate?.didUpdateState?("wait peripheral serup")
+				sleep(1)
+				if (_peripheral.services == nil) {
+					sleep(1)
+				}else{
+					break
+				}
+			}
+		}
+		if(_peripheral.services == nil){
+			print("wait peripheral services setup")
+			for _ in 0 ..< 1000 {
+				delegate?.didUpdateState?("wait peripheral services setup")
+				if (_peripheral.services == nil) {
+					sleep(1)
+				}else{
+					break
+				}
+			}
+		}
+		if(_peripheral.services![0].characteristics == nil){
+			print("wait peripheral characteristics setup")
+			for _ in 0 ..< 1000 {
+				delegate?.didUpdateState?("wait peripheral characteristics setup")
+				if (_peripheral.services![0].characteristics == nil) {
+					sleep(1)
+				}else{
+					break
+				}
+			}
+		}
+		print("state:\(_peripheral.state.rawValue)")
+		if(_peripheral.state != CBPeripheralState.connected){
+			//self.centralManager.connectPeripheral(self.peripheral!, options: nil)
+			//for(var i=0; self.peripheral.state != CBPeripheralState.Connected && i<1000; i += 1){
+			delegate?.didUpdateState?("wait peripheral connected")
+			sleep(1)
+		}
+		// OFFデータ
+		delegate?.didUpdateState?("connected perileral.")
+		let rawArray = [0x01, 0x00]
+		let dataOff = Data(bytes: rawArray, count: rawArray.count)
+		if(_peripheral.state == CBPeripheralState.connected) {
+			BLEUtilitySwift.writeCharacteristic(_peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOff)
+		}else{
+			delegate?.didUpdateState?("error connected")
+			sleep(1)
+		}
+	}
+	
+	
+    func readState() {
+        print("readStat:")
         
-        BLEUtilitySwift.readCharacteristic(peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
+        BLEUtilitySwift.readCharacteristic(_peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
     }
     
-    func startScanning(){
-        print("Start scanning")
+    func startScanning() {
+        print("Start scanning:")
         delegate?.didUpdateState?("Start scanning")
-        //centralManager.scanForPeripheralsWithServices(nil, options:nil)
-        centralManager.scanForPeripheralsWithServices([CBUUID(string: UUID_VSP_SERVICE),CBUUID(string: UUID_DISCOVERD)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(bool: true)])
+        //_centralManager.scanForPeripherals(withServices: nil, options:nil)
+		_centralManager.scanForPeripherals(withServices: [CBUUID(string: UUID_VSP_SERVICE),CBUUID(string: UUID_DISCOVERD),CBUUID(string: UUID_nRF5x),CBUUID(string: UUID_Biscuit)], options: [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(value: true as Bool)])
     }
+	
+	func disConnect() {
+		print("End Connection:")
+		_centralManager.cancelPeripheralConnection(_peripheral)
+	}
     
     // MARK:delegate - centralManager
-    
-    func centralManagerDidUpdateState(central: CBCentralManager) {
-        print("centralManagerDidUpdateState")
+		
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("centralManagerDidUpdateState:")
         
         switch (central.state) {
-        case .PoweredOff:
+        case .poweredOff:
             print("CoreBluetooth BLE hardware is powered off")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is powered off")
             break
-        case .PoweredOn:
+        case .poweredOn:
             print("CoreBluetooth BLE hardware is powered on and ready")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is powered on and ready")
             self.startScanning()
             break
-        case .Resetting:
+        case .resetting:
             print("CoreBluetooth BLE hardware is resetting")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is resetting")
             break
-        case .Unauthorized:
+        case .unauthorized:
             print("CoreBluetooth BLE state is unauthorized")
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is unauthorized")
             break
-        case .Unknown:
+        case .unknown:
             print("CoreBluetooth BLE state is unknown");
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is unknown")
             break
-        case .Unsupported:
+        case .unsupported:
             print("CoreBluetooth BLE hardware is unsupported on this platform");
             delegate?.didUpdateState?("CoreBluetooth BLE hardware is unsupported on this platform")
             break
         }
     }
+		
     
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print("Discovered \(peripheral.name)")
-        print("identifier \(peripheral.identifier)")
-        print("services \(peripheral.services)")
-        print("RSSI \(RSSI)")
+	func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+		print("Discovered \(peripheral.name)")
+		print("identifier \(peripheral.identifier)")
+		print("services \(peripheral.services)")
+		print("RSSI \(RSSI)")
         
-        delegate?.didUpdateState?("Discovered \(peripheral.name)")
-        
-        if(peripheral.name != nil && (peripheral.name == DISCOVERD || peripheral.name == DISCOVERD_F)){
-            central.stopScan()
-            print("Find " + peripheral.name!)
-            delegate?.didUpdateState?("Find " + peripheral.name!)
-            self.peripheral = peripheral;
+		delegate?.didUpdateState?("Discovered \(peripheral.name)")
+	
+		if(peripheral.name != nil && (peripheral.name == DISCOVERD || peripheral.name == DISCOVERD_F)){
+			central.stopScan()
+			print("Find " + peripheral.name!)
+			delegate?.didUpdateState?("Find " + peripheral.name!)
+			_peripheral = peripheral;
+			central.connect(_peripheral!, options: nil)
+		}
+	}
 
-            central.connectPeripheral(self.peripheral!, options: nil)
-        }
-    }
-    
-    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+    func centralManager(_: CBCentralManager,
+                        didConnect peripheral: CBPeripheral) {
         
-        self.peripheral!.delegate = self;
+		print("didConnectedPeripheral:")
+        _peripheral!.delegate = self;
         let UUID = CBUUID(string: UUID_VSP_SERVICE)
-        self.peripheral!.discoverServices([UUID])
-        print("Connected")
+        _peripheral!.discoverServices([UUID])
         delegate?.didConnect?()
     }
     
-    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        print("Disconnected")
         
-        self.peripheral = nil;
+    func centralManager(_ central: CBCentralManager,
+                        didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        
+        print("didDisconnectPeripheral:")
+		
+		central.stopScan()
+		
+        _peripheral = nil;
         
         // Validate peripheral information
         if ((peripheral.name == nil) || (peripheral.name == "")) {
@@ -221,65 +295,74 @@ class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         }
         
         // If not already connected to a peripheral, then connect to this one
-        if ((self.peripheral == nil) || (self.peripheral?.state == CBPeripheralState.Disconnected)) {
+        if ((_peripheral == nil) || (_peripheral?.state == CBPeripheralState.disconnected)) {
             // Retain the peripheral before trying to connect
-            self.peripheral = peripheral
+            _peripheral = peripheral
             
-            // Connect to peripheral
-            central.connectPeripheral(peripheral, options: nil)
+            // Connect to peripheral 再接続
+            //central.connectPeripheral(peripheral, options: nil)
         }
         delegate?.didDisconnect!()
     }
+//
+
     
     // MARK:delegate - peripheral
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral,
+                    didDiscoverServices error: Error?) {
         
         //println("Hello from deligate \(peripheral.name)");
         
         for aService in peripheral.services!{
-            print("Service UUID: \((aService ).UUID )")
+            print("didDiscoverService UUID: \((aService ).uuid )")
             //delegate?.didUpdateState?("Service UUID: \((aService as! CBService).UUID )")
-            peripheral.discoverCharacteristics(nil, forService: aService )
+            peripheral.discoverCharacteristics(nil, for: aService )
         }
     }
-    
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+		
+	
+    func peripheral(_ peripheral: CBPeripheral,
+                    didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         
-        print("Found Characteristics For Service: \(service.UUID)")
+        print("Found Characteristics For Service: \(service.uuid)")
         for aChar in service.characteristics!
         {
             //println("Characteristics UUID: \((aChar as CBCharacteristic).UUID)")
-            if((aChar ).UUID.isEqual(CBUUID(string: UUID_TX))){
+            if((aChar ).uuid.isEqual(CBUUID(string: UUID_TX))){
                 
-                var random = NSInteger(1)
-                _ = NSData(bytes: &random, length: 1)
+                let random:[UInt8] = [0x01]
+                _ = Data(bytes: random, count: 1)
                 //	ONデータ
                 var rawArray:[UInt8] = [0x01, 0x01]
-                _ = NSData(bytes: &rawArray, length: rawArray.count)
+                _ = Data(bytes: rawArray, count: rawArray.count)
                 rawArray = [0x01, 0x00]
-                _ = NSData(bytes: &rawArray, length: rawArray.count)
+                _ = Data(bytes: rawArray, count: rawArray.count)
                 
                 print("Done with setting up TX")
                 //BLEUtilitySwift.writeCharacteristic(self.peripheral, sUUID: UUID_VSP_SERVICE, cUUID: UUID_TX, data: dataOn)
-            }else if( (aChar ).UUID.isEqual((CBUUID(string: UUID_RX)))) {
-                BLEUtilitySwift.readCharacteristic(self.peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
-                BLEUtilitySwift.setNotificationForCharacteristic(self.peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX, enable: true)
+            }else if( (aChar ).uuid.isEqual((CBUUID(string: UUID_RX)))) {
+                BLEUtilitySwift.readCharacteristic(_peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX)
+                BLEUtilitySwift.setNotificationForCharacteristic(_peripheral!, sUUID: UUID_VSP_SERVICE, cUUID: UUID_RX, enable: true)
                 
                 print("Done with setting up RX sensor")
             }
         }
     }
     
-    func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("didWriteValueForCharacteristic \(characteristic.UUID) error = \(error)");
+    func peripheral(_ peripheral: CBPeripheral,
+                    didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+        print("didWriteValueForCharacteristic \(characteristic.uuid) error = \(error)");
+        
     }
     
     var str: String! = "something"
     
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral,
+                    didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         
-        if !pauseUpdate.boolValue {
+        if !pauseUpdate {
             
             // ReadValue
             let temp = characteristic.value
@@ -288,20 +371,24 @@ class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
             str = " \(temp) "
             
             
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd H:m:s"
             
-            let date = dateFormatter.stringFromDate(NSDate()) as String!
+            let date = dateFormatter.string(from: Date()) as String!
             
             results.append("\(date),")
             results.append("\(str)\n")
             
         }
         //delegate?.didUpdateState!("updateStat")
+        
     }
-    
-    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("didUpdateNotificationStateForCharacteristic \(characteristic.UUID), error = \(error)");
+
+
+    func peripheral(_ peripheral: CBPeripheral,
+                    didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+        
+        print("didUpdateNotificationStateForCharacteristic \(characteristic.uuid), error = \(error)");
         
         // ReadValue
         let temp = characteristic.value
@@ -310,10 +397,10 @@ class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         str = " \(temp) "
         
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd H:m:s"
         
-        let date = dateFormatter.stringFromDate(NSDate()) as String!
+        let date = dateFormatter.string(from: Date()) as String!
         
         results.append("\(date),")
         results.append("\(str)\n")
@@ -321,17 +408,20 @@ class BLEDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
         //delegate?.didUpdateState!("updateNotification")
         
     }
+
+
     
     func aarrayToString() -> String {
         var str: String! = ""
         
-        for var i = 0; i < results.count; ++i{
-            
+ //     for (var i=0; i < results.count; i += 1) {
+        for i in 0 ..< results.count {
             str = str + String(results[i])
         }
         return str
     }
     
 }
+
 
 

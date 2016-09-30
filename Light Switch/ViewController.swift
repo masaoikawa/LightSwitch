@@ -18,13 +18,13 @@ class ViewController: UIViewController, DiscoveryDelegate {
     internal var discovery: BLEDiscovery!
     
     // MARK:delegate - ViewController
-    
+    // MARK: (DidLoadイベント)
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        dispatch_async(dispatch_get_main_queue(), { () in
-            self.btnLabel.highlighted = true
-            self.btnLabel.enabled = true//false
+        DispatchQueue.main.async(execute: { () in
+            self.btnLabel.isHighlighted = true
+            self.btnLabel.isEnabled = true//false
             self.temperatureLabel.text = "Now Starting."
         })
         
@@ -41,23 +41,23 @@ class ViewController: UIViewController, DiscoveryDelegate {
     // MARK:delegate - Discovery
     
     func didConnect() {
-        dispatch_async(dispatch_get_main_queue(), { () in
-            self.btnLabel.highlighted = false
-            self.btnLabel.enabled = true
+        DispatchQueue.main.async(execute: { () in
+            self.btnLabel.isHighlighted = false
+            self.btnLabel.isEnabled = true
             self.temperatureLabel.text = "Connected"
         })
     }
     
     func didDisconnect() {
-        dispatch_async(dispatch_get_main_queue(), { () in
-            self.btnLabel.highlighted = true
-            self.btnLabel.enabled = false
+        DispatchQueue.main.async(execute: { () in
+            self.btnLabel.isHighlighted = true
+            self.btnLabel.isEnabled = false
             self.temperatureLabel.text = "DisConnected"
         })
     }
     
-    func didUpdateState(message: String) {
-        dispatch_async(dispatch_get_main_queue(), { () in
+    func didUpdateState(_ message: String) {
+        DispatchQueue.main.async(execute: { () in
             self.temperatureLabel.text = message
         })
     }
@@ -65,24 +65,24 @@ class ViewController: UIViewController, DiscoveryDelegate {
     
     // MARK: @IBAction
     
-    @IBAction func sendButton(sender: AnyObject) {
+    @IBAction func sendButton(_ sender: AnyObject) {
         
-        if !discovery.switchState.boolValue {
-            dispatch_async(dispatch_get_main_queue(), { () in
-                self.btnLabel.setTitle("Off", forState: .Normal)
+        if !discovery.switchState {
+            DispatchQueue.main.async(execute: { () in
+                self.btnLabel.setTitle("Off", for: UIControlState())
             })
             
             discovery.sendOn()
             discovery.switchState = true
-            discovery.readState()
+            //discovery.readState()
         } else {
-            dispatch_async(dispatch_get_main_queue(), { () in
-                self.btnLabel.setTitle("On", forState: .Normal)
+            DispatchQueue.main.async(execute: { () in
+                self.btnLabel.setTitle("On", for: UIControlState())
             })
             
             discovery.sendOff()
             discovery.switchState = false
-            discovery.readState()
+            //discovery.readState()
         }
     }
         

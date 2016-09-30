@@ -11,51 +11,56 @@ import CoreBluetooth
 
 class BLEUtilitySwift: NSObject {
     
-    class func writeCharacteristic(peripheral:CBPeripheral, sUUID: String, cUUID: String, data: NSData){
+    class func writeCharacteristic(_ peripheral:CBPeripheral, sUUID: String, cUUID: String, data: Data){
         for service in (peripheral.services )! {
-            if(service.UUID == CBUUID(string: sUUID)){
-                for characteristic in (service.characteristics )! {
-                    if(characteristic.UUID == CBUUID(string: cUUID)){
-                        /* Everything is found, WRITE characteristic ! */
-                        peripheral.writeValue(data, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
-                    }
+            if(service.uuid == CBUUID(string: sUUID)){
+                print("service.characteristics:\(service.characteristics)")
+                if (service.characteristics != nil) {
+                    for characteristic in (service.characteristics )! {
+                        if(characteristic.uuid == CBUUID(string: cUUID)){
+                            /* Everything is found, WRITE characteristic ! */
+                            peripheral.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+                        }
+                    }                    
+                }else{
+                    print("error service.characteristics nil.")
                 }
             }
         }
     }
     
-    class func readCharacteristic(peripheral:CBPeripheral, sUUID: String, cUUID: String){
+    class func readCharacteristic(_ peripheral:CBPeripheral, sUUID: String, cUUID: String){
         for service in (peripheral.services )! {
-            if(service.UUID == CBUUID(string: sUUID)){
+            if(service.uuid == CBUUID(string: sUUID)){
                 for characteristic in (service.characteristics )!{
-                    if(characteristic.UUID == CBUUID(string: cUUID)){
+                    if(characteristic.uuid == CBUUID(string: cUUID)){
                         /* Everything is found, READ characteristic ! */
-                        peripheral.readValueForCharacteristic(characteristic)
+                        peripheral.readValue(for: characteristic)
                     }
                 }
             }
         }
     }
     
-    class func setNotificationForCharacteristic(peripheral:CBPeripheral, sUUID: String, cUUID: String, enable: Bool){
+    class func setNotificationForCharacteristic(_ peripheral:CBPeripheral, sUUID: String, cUUID: String, enable: Bool){
         for service in (peripheral.services )! {
-            if(service.UUID == CBUUID(string: sUUID)){
+            if(service.uuid == CBUUID(string: sUUID)){
                 for characteristic in (service.characteristics )! {
-                    if(characteristic.UUID == CBUUID(string: cUUID)){
+                    if(characteristic.uuid == CBUUID(string: cUUID)){
                         /* Everything is found, SET notification ! */
-                        peripheral.setNotifyValue(enable, forCharacteristic: characteristic)
+                        peripheral.setNotifyValue(enable, for: characteristic)
                     }
                 }
             }
         }
     }
     
-    class func isCharacteristicNotifiable(peripheral:CBPeripheral, sUUID: CBUUID, cUUID: CBUUID) -> Bool{
+    class func isCharacteristicNotifiable(_ peripheral:CBPeripheral, sUUID: CBUUID, cUUID: CBUUID) -> Bool{
         for service in (peripheral.services)!{
-            if(service.UUID == sUUID){
+            if(service.uuid == sUUID){
                 for characteristic in (service.characteristics)! {
-                    if(characteristic.UUID == cUUID){
-                        if(characteristic.properties == CBCharacteristicProperties.Notify){
+                    if(characteristic.uuid == cUUID){
+                        if(characteristic.properties == CBCharacteristicProperties.notify){
                             return true
                         }else{
                             return false
